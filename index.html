@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fotos das Provas - Seu Nome / Sua Marca</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        color: #333;
+    }
+
+    header {
+        background: #0a3d62;
+        color: white;
+        padding: 25px 15px 20px;
+        text-align: center;
+    }
+
+    header img {
+        max-width: 120px;
+        margin-bottom: 10px;
+        border-radius: 8px; /* retire se quiser sem borda */
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    header p {
+        margin: 4px 0 0;
+        font-size: 15px;
+        opacity: 0.85;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .prova {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        transition: 0.25s;
+        cursor: pointer;
+    }
+
+    .prova:hover {
+        background: #eaf3ff;
+        transform: scale(1.02);
+    }
+
+    .prova h3 {
+        margin: 0 0 8px;
+        color: #0a3d62;
+        font-size: 20px;
+    }
+
+    .prova p {
+        margin: 0;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    #topo {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #0a3d62;
+        color: white;
+        padding: 12px 14px;
+        border-radius: 50%;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<header>
+
+    <!-- 🔗 TROQUE O LINK ABAIXO PELA URL DO SEU LOGO -->
+    <img src="https://via.placeholder.com/300x300.png?text=Seu+Logo" alt="Logo">
+    
+    <!-- 🏁 NOME DA SUA MARCA/PROJETO -->
+    <h1>Foto, Mar e Aventuras</h1>
+    <p>Galerias das provas esportivas — clique para abrir a sua sessão</p>
+</header>
+
+<div class="container">
+
+    <!-- ======= EXEMPLOS DE PROVAS ======= -->
+    <div class="prova" onclick="window.open('https://seulink.com/prova1', '_blank')">
+        <h3>🏊 Triathlon — Florianópolis</h3>
+        <p>Data: 21/01/2025 — Abrir galeria</p>
+    </div>
+
+    <div class="prova" onclick="window.open('https://seulink.com/prova2', '_blank')">
+        <h3>🚴 Desafio das Serras</h3>
+        <p>Data: 05/02/2025 — Abrir galeria</p>
+    </div>
+
+    <div class="prova" onclick="window.open('https://seulink.com/prova3', '_blank')">
+        <h3>🏃 Corrida da Praia</h3>
+        <p>Data: 12/03/2025 — Abrir galeria</p>
+    </div>
+
+    <div class="prova" onclick="window.open('https://seulink.com/prova4', '_blank')">
+        <h3>🚵 Maratona MTB</h3>
+        <p>Data: 28/03/2025 — Abrir galeria</p>
+    </div>
+
+    <!-- ======= COPIE E COLE PARA ADICIONAR MAIS =======
+    <div class="prova" onclick="window.open('LINK_DA_GALERIA', '_blank')">
+        <h3>🏁 Nome da Prova</h3>
+        <p>Data: DD/MM/AAAA — Abrir galeria</p>
+    </div>
+    =================================================== -->
+
+</div>
+
+<div id="topo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</div>
+
+<script>
+    window.onscroll = function() {
+        document.getElementById("topo").style.display =
+            (document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+</script>
+
+</body>
+  </html>
