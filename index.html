@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fotos das Provas - Seu Nome / Sua Marca</title>
+
+<title>Galerias das Provas | Foto, Mar e Aventuras</title>
+<meta name="description" content="Galerias de fotos das provas esportivas registradas pela Foto, Mar e Aventuras. Encontre sua prova e acesse suas fotos.">
 
 <style>
     body {
@@ -21,9 +23,9 @@
     }
 
     header img {
-        max-width: 120px;
+        max-width: 130px;
         margin-bottom: 10px;
-        border-radius: 8px; /* retire se quiser sem borda */
+        border-radius: 8px;
     }
 
     header h1 {
@@ -33,7 +35,178 @@
     }
 
     header p {
-        margin: 4px 0 0;
+        margin: 6px 0 12px;
+        font-size: 15px;
+        opacity: 0.85;
+    }
+
+    .busca {
+        max-width: 420px;
+        margin: 10px auto 0;
+    }
+
+    .busca input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .mes {
+        margin-bottom: 30px;
+    }
+
+    .mes h2 {
+        color: #0a3d62;
+        border-left: 6px solid #0a3d62;
+        padding-left: 10px;
+        margin-bottom: 15px;
+    }
+
+    .prova {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        transition: 0.25s;
+        cursor: pointer;
+    }
+
+    .prova:hover {
+        background: #eaf3ff;
+        transform: scale(1.02);
+    }
+
+    .prova h3 {
+        margin: 0 0 8px;
+        color: #0a3d62;
+        font-size: 20px;
+    }
+
+    .prova p {
+        margin: 0;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    #topo {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #0a3d62;
+        color: white;
+        padding: 12px 14px;
+        border-radius: 50%;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <!-- 🖼️ LOGO (coloque o arquivo em /imagens/logo.png) -->
+    <img src="imagens/logo.png" alt="Foto, Mar e Aventuras">
+
+    <h1>Foto, Mar e Aventuras</h1>
+    <p>Encontre sua prova e acesse sua galeria de fotos</p>
+
+    <!-- 🔍 BUSCA -->
+    <div class="busca">
+        <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- ======= JANEIRO ======= -->
+    <div class="mes">
+        <h2>Janeiro 2026</h2>
+
+        <div class="prova" onclick="window.open('https://seulink.com/prova1', '_blank')">
+            <h3>🏊 Triathlon — Florianópolis</h3>
+            <p>21/01/2026 — Abrir galeria</p>
+        </div>
+    </div>
+
+    <!-- ======= FEVEREIRO ======= -->
+    <div class="mes">
+        <h2>Fevereiro 2026</h2>
+
+        <div class="prova" onclick="window.open('https://seulink.com/prova2', '_blank')">
+            <h3>🚴 Desafio das Serras</h3>
+            <p>05/02/2026 — Abrir galeria</p>
+        </div>
+    </div>
+
+    <!-- ======= MARÇO ======= -->
+    <div class="mes">
+        <h2>Março 2026</h2>
+
+        <div class="prova" onclick="window.open('https://seulink.com/prova3', '_blank')">
+            <h3>🏃 Corrida da Praia</h3>
+            <p>12/03/2026 — Abrir galeria</p>
+        </div>
+
+        <div class="prova" onclick="window.open('https://seulink.com/prova4', '_blank')">
+            <h3>🚵 Maratona MTB</h3>
+            <p>28/03/2026 — Abrir galeria</p>
+        </div>
+    </div>
+
+    <!-- ======= MODELO PARA NOVAS PROVAS =======
+    <div class="mes">
+        <h2>Mês 2026</h2>
+
+        <div class="prova" onclick="window.open('LINK_DA_GALERIA', '_blank')">
+            <h3>🏁 Nome da Prova — Cidade</h3>
+            <p>DD/MM/2026 — Abrir galeria</p>
+        </div>
+    </div>
+    =========================================== -->
+
+</div>
+
+<div id="topo" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</div>
+
+<script>
+    // Botão voltar ao topo
+    window.onscroll = function() {
+        document.getElementById("topo").style.display =
+            (document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
+
+    // Busca dinâmica
+    document.getElementById("busca").addEventListener("keyup", function() {
+        const termo = this.value.toLowerCase();
+        const provas = document.querySelectorAll(".prova");
+        const meses = document.querySelectorAll(".mes");
+
+        provas.forEach(prova => {
+            const texto = prova.innerText.toLowerCase();
+            prova.style.display = texto.includes(termo) ? "block" : "none";
+        });
+
+        meses.forEach(mes => {
+            const provasVisiveis = mes.querySelectorAll(".prova:not([style*='display: none'])");
+            mes.style.display = provasVisiveis.length ? "block" : "none";
+        });
+    });
+</script>
+
+</body>
+</html>
         font-size: 15px;
         opacity: 0.85;
     }
