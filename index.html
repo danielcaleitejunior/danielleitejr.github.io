@@ -4,10 +4,30 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Galerias das Provas | Foto, Mar e Aventuras</title>
-<meta name="description" content="Galerias de fotos das provas esportivas registradas pela Foto, Mar e Aventuras. Encontre sua prova e acesse suas fotos.">
+<title>Fotos das Provas 2026 | Foto, Mar e Aventuras</title>
+
+<meta name="description" content="Galerias de fotos das provas esportivas de 2026. Encontre sua corrida, triathlon ou evento esportivo e acesse suas fotos com a Foto, Mar e Aventuras.">
+
+<meta name="robots" content="index, follow">
+
+<!-- 🔗 CANONICAL (ATIVAR APÓS DOMÍNIO) -->
+<!-- <link rel="canonical" href="https://www.seudominio.com/"> -->
+
+<!-- 🌐 OPEN GRAPH -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fotos das Provas 2026 | Foto, Mar e Aventuras">
+<meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
+<meta property="og:image" content="https://www.seudominio.com/imagens/logo.png">
+<meta property="og:locale" content="pt_BR">
+
+<!-- 🐦 TWITTER -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fotos das Provas 2026 | Foto, Mar e Aventuras">
+<meta name="twitter:description" content="Galerias oficiais das provas esportivas fotografadas pela Foto, Mar e Aventuras.">
 
 <style>
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -18,106 +38,133 @@ body {
 header {
     background: #0a3d62;
     color: white;
-    padding: 25px 15px 20px;
+    padding: 20px 15px;
     text-align: center;
 }
 
 header img {
-    max-width: 130px;
+    max-width: 120px;
+    width: 100%;
+    height: auto;
     margin-bottom: 10px;
     border-radius: 8px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 24px;
 }
 
 header p {
-    margin: 6px 0 12px;
-    font-size: 15px;
-    opacity: 0.85;
+    margin: 8px 0 12px;
+    font-size: 14px;
+    opacity: 0.9;
 }
 
 .busca {
     max-width: 420px;
-    margin: 10px auto 0;
+    margin: 0 auto;
 }
 
 .busca input {
     width: 100%;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 10px;
     border: none;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .container {
     max-width: 900px;
     margin: auto;
-    padding: 20px;
+    padding: 16px;
 }
 
 .mes {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .mes h2 {
+    font-size: 18px;
     color: #0a3d62;
-    border-left: 6px solid #0a3d62;
+    border-left: 5px solid #0a3d62;
     padding-left: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .prova {
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-    transition: 0.25s;
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     cursor: pointer;
 }
 
-.prova:hover {
-    background: #eaf3ff;
-    transform: scale(1.02);
-}
-
 .prova h3 {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
+    font-size: 17px;
     color: #0a3d62;
-    font-size: 20px;
 }
 
 .prova p {
     margin: 0;
     font-size: 14px;
-    opacity: 0.7;
+    opacity: 0.75;
+}
+
+@media (hover: hover) {
+    .prova:hover {
+        background: #eaf3ff;
+    }
 }
 
 #topo {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 18px;
+    right: 18px;
     background: #0a3d62;
     color: white;
-    padding: 12px 14px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     font-size: 22px;
-    cursor: pointer;
     display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    header h1 { font-size: 26px; }
+    .mes h2 { font-size: 20px; }
+    .prova h3 { font-size: 19px; }
 }
 </style>
+
+<!-- 📊 DADOS ESTRUTURADOS (EVENTOS) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  "name": "Provas esportivas 2026 - Foto, Mar e Aventuras",
+  "organizer": {
+    "@type": "Organization",
+    "name": "Foto, Mar e Aventuras"
+  },
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled"
+}
+</script>
+
 </head>
 
 <body>
 
 <header>
     <img src="imagens/logo.png" alt="Foto, Mar e Aventuras">
-    <h1>Foto, Mar e Aventuras</h1>
-    <p>Encontre sua prova e acesse sua galeria de fotos</p>
+    <h1>Fotos das Provas 2026</h1>
+    <p>Encontre sua prova e acesse sua galeria oficial</p>
 
     <div class="busca">
         <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
@@ -126,7 +173,6 @@ header p {
 
 <div class="container">
 
-    <!-- ======= MARÇO 2026 (mais recente) ======= -->
     <div class="mes">
         <h2>Março 2026</h2>
 
@@ -137,4 +183,51 @@ header p {
 
         <div class="prova" onclick="window.open('https://seulink.com/prova3','_blank')">
             <h3>🏃 Corrida da Praia</h3>
-            <p>12/03
+            <p>12/03/2026 — Abrir galeria</p>
+        </div>
+    </div>
+
+    <div class="mes">
+        <h2>Fevereiro 2026</h2>
+
+        <div class="prova" onclick="window.open('https://seulink.com/prova2','_blank')">
+            <h3>🚴 Desafio das Serras</h3>
+            <p>05/02/2026 — Abrir galeria</p>
+        </div>
+    </div>
+
+    <div class="mes">
+        <h2>Janeiro 2026</h2>
+
+        <div class="prova" onclick="window.open('https://seulink.com/prova1','_blank')">
+            <h3>🏊 Triathlon — Florianópolis</h3>
+            <p>21/01/2026 — Abrir galeria</p>
+        </div>
+    </div>
+
+</div>
+
+<div id="topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</div>
+
+<script>
+window.addEventListener("scroll", function () {
+    document.getElementById("topo").style.display =
+        document.documentElement.scrollTop > 200 ? "flex" : "none";
+});
+
+document.getElementById("busca").addEventListener("keyup", function () {
+    const termo = this.value.toLowerCase();
+    document.querySelectorAll(".mes").forEach(mes => {
+        let visivel = false;
+        mes.querySelectorAll(".prova").forEach(prova => {
+            const mostrar = prova.innerText.toLowerCase().includes(termo);
+            prova.style.display = mostrar ? "block" : "none";
+            if (mostrar) visivel = true;
+        });
+        mes.style.display = visivel ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>
