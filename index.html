@@ -8,18 +8,13 @@
 
 <meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo e acesse suas fotos com a Foto, Mar e Aventuras.">
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://danielleitejr.com.br/">
 
-<!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
 <meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
 <meta property="og:image" content="https://danielleitejr.com.br/logo.png">
 <meta property="og:locale" content="pt_BR">
-
-<!-- TWITTER -->
-<meta name="twitter:card" content="summary_large_image">
 
 <style>
 * { box-sizing: border-box; }
@@ -31,53 +26,62 @@ body {
     color: #333;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER DESKTOP-FIRST E FLUIDO ===== */
 header {
     background: linear-gradient(160deg, #082235, #0a3d62);
     color: white;
-    padding: 14px 16px 16px;
+    padding: 14px 16px;
 }
 
 .header-content {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; /* 🔑 chave do comportamento fluido */
     align-items: center;
-    text-align: center;
-    gap: 6px;
+    gap: 14px;
 }
 
-.marca {
-    font-size: 18px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin: 0;
-    opacity: 0.95;
-}
-
+/* LOGO */
 header img {
-    max-width: 130px;
+    max-width: 140px;
+    width: 100%;
     height: auto;
+    flex-shrink: 0;
 }
 
-.titulo-pagina {
-    font-size: 15px;
-    margin: 2px 0 6px;
+/* TEXTO */
+.header-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 220px;
+    min-width: 200px;
+}
+
+.header-texto h1 {
+    margin: 0;
+    font-size: clamp(16px, 3vw, 20px);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.header-texto p {
+    margin: 0;
+    font-size: clamp(13px, 2.5vw, 15px);
     opacity: 0.9;
 }
 
 /* BUSCA */
 .busca {
-    width: 100%;
-    max-width: 420px;
+    flex: 1 1 260px;
+    min-width: 220px;
 }
 
 .busca input {
     width: 100%;
     padding: 12px 14px;
-    border-radius: 12px;
+    border-radius: 14px;
     border: none;
     font-size: 15px;
 }
@@ -110,9 +114,6 @@ header img {
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     cursor: pointer;
     min-height: 96px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .prova h3 {
@@ -131,7 +132,7 @@ header img {
     .prova:hover { background: #eaf3ff; }
 }
 
-/* DESTAQUE 2025 */
+/* DESTAQUE */
 .prova.destaque-anos {
     background-color: #d35400;
 }
@@ -184,29 +185,6 @@ footer {
     margin-top: 40px;
 }
 
-footer a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-    .header-content {
-        flex-direction: row;
-        text-align: left;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .textos {
-        flex: 1;
-    }
-
-    .marca { font-size: 20px; }
-    .titulo-pagina { font-size: 16px; }
-}
-
 @media (min-width: 1024px) {
     footer {
         position: fixed;
@@ -224,13 +202,13 @@ footer a {
     <div class="header-content">
         <img src="logo.png" alt="Foto, Mar e Aventuras">
 
-        <div class="textos">
-            <h1 class="marca">Foto, Mar e Aventuras</h1>
-            <div class="titulo-pagina">Fotos das Provas e Treinos</div>
+        <div class="header-texto">
+            <h1>Foto, Mar e Aventuras</h1>
+            <p>Fotos das Provas e Treinos</p>
+        </div>
 
-            <div class="busca">
-                <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
-            </div>
+        <div class="busca">
+            <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
         </div>
     </div>
 </header>
@@ -241,12 +219,8 @@ footer a {
         <h2>Janeiro 2026</h2>
 
         <div class="prova" onclick="window.open('https://seulink.com/prova1','_blank')">
-            <h3>🏃 Treino Via São Pedro JF - Juiz de Fora - MG (TESTE)</h3>
+            <h3>🏃 Treino Via São Pedro JF - Juiz de Fora - MG</h3>
             <p>03/01/2026 — Abrir galeria</p>
-
-            <span style="position:absolute; left:-9999px;" aria-hidden="true">
-                janeiro treino via são pedro juiz de fora
-            </span>
         </div>
     </div>
 
@@ -255,11 +229,7 @@ footer a {
 
         <div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
             <h3>🚴🏃🏊 2025 e anteriores</h3>
-            <p>31/12/2025 — Abrir galeria</p>
-
-            <span style="position:absolute; left:-9999px;" aria-hidden="true">
-                2024 2023 provas antigas eventos anteriores
-            </span>
+            <p>Galerias antigas</p>
         </div>
     </div>
 
@@ -267,12 +237,7 @@ footer a {
 </div>
 
 <footer>
-    <p>
-        📸 Siga no Instagram:
-        <a href="https://www.instagram.com/fotomareaventuras" target="_blank" rel="noopener">
-            @fotomareaventuras
-        </a>
-    </p>
+    <p>📸 Instagram: <strong>@fotomareaventuras</strong></p>
     <p style="font-size:12px;opacity:0.8;">
         © 2026 Foto, Mar e Aventuras — Todos os direitos reservados
     </p>
