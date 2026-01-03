@@ -9,20 +9,12 @@
 <meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo e acesse suas fotos com a Foto, Mar e Aventuras.">
 <meta name="robots" content="index, follow">
 
-<!-- 🔗 CANONICAL (ATIVAR APÓS DOMÍNIO PRÓPRIO) -->
-<!-- <link rel="canonical" href="https://www.seudominio.com/"> -->
-
-<!-- 🌐 OPEN GRAPH -->
+<!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
 <meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
 <meta property="og:image" content="logo.png">
 <meta property="og:locale" content="pt_BR">
-
-<!-- 🐦 TWITTER -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
-<meta name="twitter:description" content="Galerias oficiais das provas esportivas fotografadas pela Foto, Mar e Aventuras.">
 
 <style>
 * { box-sizing: border-box; }
@@ -38,24 +30,33 @@ body {
 header {
     background: #0a3d62;
     color: white;
-    padding: 20px 16px 24px;
-    text-align: center;
+    padding: 18px 16px 20px;
 }
 
-header img {
-    max-width: 200px;
+/* Topo do header */
+.header-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    max-width: 900px;
+    margin: 0 auto 14px;
+}
+
+/* Logo */
+.logo {
+    max-width: 150px;
     width: 100%;
     height: auto;
-    margin-bottom: 12px;
 }
 
-header h1 {
+/* Texto ao lado do logo */
+.header-texto h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 22px;
 }
 
-header p {
-    margin: 8px 0 14px;
+.header-texto p {
+    margin: 6px 0 0;
     font-size: 14px;
     opacity: 0.9;
 }
@@ -163,18 +164,13 @@ footer a {
     font-weight: bold;
 }
 
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* 🖥️ Rodapé fixo apenas no desktop */
+/* Rodapé fixo só no desktop */
 @media (min-width: 1024px) {
     footer {
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        margin-top: 0;
         z-index: 1000;
     }
 
@@ -183,35 +179,31 @@ footer a:hover {
     }
 }
 
-/* ===== AJUSTES DESKTOP ===== */
-@media (min-width: 768px) {
-    header h1 { font-size: 26px; }
-    .mes h2 { font-size: 20px; }
-    .prova h3 { font-size: 19px; }
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        max-width: 180px;
+    }
 }
 </style>
-
-<!-- 📊 DADOS ESTRUTURADOS (SEO) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SportsEvent",
-  "name": "Provas esportivas e Treinos - Foto, Mar e Aventuras",
-  "organizer": {
-    "@type": "Organization",
-    "name": "Foto, Mar e Aventuras",
-    "sameAs": ["https://www.instagram.com/fotomareaventuras"]
-  }
-}
-</script>
-
 </head>
+
 <body>
 
 <header>
-    <img src="logo.png" alt="Foto, Mar e Aventuras">
-    <h1>Fotos das Provas e Treinos</h1>
-    <p>Encontre sua prova e acesse sua galeria oficial</p>
+    <div class="header-top">
+        <img src="logo.png" alt="Foto, Mar e Aventuras" class="logo">
+
+        <div class="header-texto">
+            <h1>Fotos das Provas e Treinos</h1>
+            <p>Encontre sua prova e acesse sua galeria oficial</p>
+        </div>
+    </div>
 
     <div class="busca">
         <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
@@ -220,7 +212,6 @@ footer a:hover {
 
 <div class="container">
 
-    <!-- MARÇO 2026 -->
     <div class="mes">
         <h2>Março 2026</h2>
 
@@ -235,7 +226,6 @@ footer a:hover {
         </div>
     </div>
 
-    <!-- FEVEREIRO 2026 -->
     <div class="mes">
         <h2>Fevereiro 2026</h2>
 
@@ -245,7 +235,6 @@ footer a:hover {
         </div>
     </div>
 
-    <!-- JANEIRO 2026 -->
     <div class="mes">
         <h2>Janeiro 2026</h2>
 
@@ -254,33 +243,25 @@ footer a:hover {
             <p>21/01/2026 — Abrir galeria</p>
         </div>
     </div>
-        <!-- 2025 e anteriores -->
+
     <div class="mes">
         <h2>2025 e anteriores</h2>
 
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
-    <h3>🚴🏃🏊 2025 e anteriores</h3>
-    <p>31/12/2025 — Abrir galeria</p>
-
-    <span style="position:absolute; left:-9999px;" aria-hidden="true">
-    2024 2023 2022 2021 2020 2019 2018
-    provas antigas eventos anteriores fotos antigas
-</span>
-
-</div>
-
-
+        <div class="prova"
+             data-keywords="2025 2024 2023 2022 2021 2020 2019 2018 provas antigas eventos anteriores"
+             onclick="window.open('https://danielleitejr.fotop.com','_blank')">
+            <h3>🚴🏃🏊 2025 e anteriores</h3>
+            <p>31/12/2025 — Abrir galeria</p>
+        </div>
+    </div>
 
     <div id="sem-resultados">Nenhuma prova encontrada 😕</div>
-
 </div>
 
 <footer>
     <p>
-        📸 Siga no Instagram:
-        <a href="https://www.instagram.com/fotomareaventuras" target="_blank" rel="noopener">
-            @fotomareaventuras
-        </a>
+        📸 Instagram:
+        <a href="https://www.instagram.com/fotomareaventuras" target="_blank">@fotomareaventuras</a>
     </p>
     <p style="font-size:12px;opacity:0.8;">
         © 2026 Foto, Mar e Aventuras — Todos os direitos reservados
@@ -290,7 +271,6 @@ footer a:hover {
 <div id="topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</div>
 
 <script>
-/* 🔍 BUSCA INTELIGENTE */
 const normalizar = texto =>
     texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
@@ -302,7 +282,9 @@ document.getElementById("busca").addEventListener("input", function () {
         let mesVisivel = false;
 
         mes.querySelectorAll(".prova").forEach(prova => {
-            const texto = normalizar(prova.innerText);
+            const texto = normalizar(
+                prova.innerText + " " + (prova.dataset.keywords || "")
+            );
             const mostrar = texto.includes(termo);
             prova.style.display = mostrar ? "block" : "none";
             if (mostrar) mesVisivel = true;
@@ -316,7 +298,6 @@ document.getElementById("busca").addEventListener("input", function () {
         encontrou ? "none" : "block";
 });
 
-/* ⬆️ BOTÃO TOPO */
 window.addEventListener("scroll", () => {
     document.getElementById("topo").style.display =
         document.documentElement.scrollTop > 200 ? "flex" : "none";
