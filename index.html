@@ -26,7 +26,7 @@ body {
     color: #333;
 }
 
-/* ===== HEADER DESKTOP-FIRST E FLUIDO ===== */
+/* ===== HEADER ===== */
 header {
     background: linear-gradient(160deg, #082235, #0a3d62);
     color: white;
@@ -37,26 +37,19 @@ header {
     max-width: 1100px;
     margin: auto;
     display: flex;
-    flex-wrap: wrap; /* 🔑 chave do comportamento fluido */
+    flex-wrap: wrap;
     align-items: center;
     gap: 14px;
 }
 
-/* LOGO */
 header img {
     max-width: 140px;
     width: 100%;
     height: auto;
-    flex-shrink: 0;
 }
 
-/* TEXTO */
 .header-texto {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
     flex: 1 1 220px;
-    min-width: 200px;
 }
 
 .header-texto h1 {
@@ -72,10 +65,8 @@ header img {
     opacity: 0.9;
 }
 
-/* BUSCA */
 .busca {
     flex: 1 1 260px;
-    min-width: 220px;
 }
 
 .busca input {
@@ -102,7 +93,6 @@ header img {
     color: #0a3d62;
     border-left: 5px solid #0a3d62;
     padding-left: 10px;
-    margin-bottom: 14px;
 }
 
 /* ===== CARD ===== */
@@ -113,7 +103,7 @@ header img {
     margin-bottom: 14px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     cursor: pointer;
-    min-height: 96px;
+    position: relative;
 }
 
 .prova h3 {
@@ -128,11 +118,11 @@ header img {
     opacity: 0.8;
 }
 
-@media (hover: hover) {
-    .prova:hover { background: #eaf3ff; }
+.prova:hover {
+    background: #eaf3ff;
 }
 
-/* DESTAQUE */
+/* Destaque anos */
 .prova.destaque-anos {
     background-color: #d35400;
 }
@@ -142,19 +132,11 @@ header img {
     color: #fff;
 }
 
-@media (hover: hover) {
-    .prova.destaque-anos:hover {
-        background-color: #bf4b00;
-    }
-}
-
-/* ===== SEM RESULTADOS ===== */
-#sem-resultados {
-    display: none;
-    text-align: center;
-    padding: 40px 10px;
-    font-size: 16px;
-    opacity: 0.7;
+/* ===== TEXTO OCULTO PARA BUSCA ===== */
+.prova span[aria-hidden="true"] {
+    position: absolute;
+    left: -9999px;
+    top: 0;
 }
 
 /* ===== BOTÃO TOPO ===== */
@@ -180,9 +162,41 @@ footer {
     background: #0a3d62;
     color: white;
     text-align: center;
-    padding: 18px 12px;
+    padding: 22px 12px;
     font-size: 14px;
     margin-top: 40px;
+}
+
+/* Botão Instagram */
+.footer-social {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #ffffff;
+    color: #0a3d62;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.instagram-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.instagram-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
 }
 
 @media (min-width: 1024px) {
@@ -191,7 +205,9 @@ footer {
         bottom: 0;
         width: 100%;
     }
-    body { padding-bottom: 90px; }
+    body {
+        padding-bottom: 110px;
+    }
 }
 </style>
 </head>
@@ -222,11 +238,9 @@ footer {
             <h3>🏃 Treino Via São Pedro JF - Juiz de Fora - MG</h3>
             <p>03/01/2026 — Abrir galeria</p>
 
-            <span style="position:absolute; left:-9999px;" aria-hidden="true">
-    Janeiro janeiro sábado Sabado
-    treino
+            <span aria-hidden="true">
+                janeiro sábado treino via são pedro jf juiz de fora corrida running
             </span>
-            
         </div>
     </div>
 
@@ -237,24 +251,36 @@ footer {
             <h3>🚴🏃🏊 2025 e anteriores</h3>
             <p>Galerias antigas</p>
 
-            <span style="position:absolute; left:-9999px;" aria-hidden="true">
-    2024 2023 24 23
-    provas antigas eventos anteriores fotos antigas
+            <span aria-hidden="true">
+                2025 2024 2023 23 24 provas antigas eventos fotos arquivo histórico
             </span>
-            
         </div>
     </div>
 
-    <div id="sem-resultados">Nenhuma prova encontrada 😕</div>
+    <div id="sem-resultados" style="display:none;text-align:center;opacity:0.7;">
+        Nenhuma prova encontrada 😕
+    </div>
+
 </div>
 
 <footer>
-    <p>
-        📸 Siga no Instagram:
-        <a href="https://www.instagram.com/fotomareaventuras" target="_blank" rel="noopener">
+    <p>📸 Siga no Instagram</p>
+
+    <div class="footer-social">
+        <a href="https://www.instagram.com/fotomareaventuras"
+           target="_blank"
+           rel="noopener"
+           class="instagram-btn"
+           aria-label="Instagram Foto, Mar e Aventuras">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/>
+            </svg>
+
             @fotomareaventuras
         </a>
-    </p>
+    </div>
+
     <p style="font-size:12px;opacity:0.8;">
         © 2026 Foto, Mar e Aventuras — Todos os direitos reservados
     </p>
@@ -271,17 +297,18 @@ document.getElementById("busca").addEventListener("input", function () {
     let encontrou = false;
 
     document.querySelectorAll(".mes").forEach(mes => {
-        let mesVisivel = false;
+        let visivel = false;
 
         mes.querySelectorAll(".prova").forEach(prova => {
             const texto = normalizar(prova.innerText);
             const mostrar = texto.includes(termo);
+
             prova.style.display = mostrar ? "block" : "none";
-            if (mostrar) mesVisivel = true;
+            if (mostrar) visivel = true;
         });
 
-        mes.style.display = mesVisivel ? "block" : "none";
-        if (mesVisivel) encontrou = true;
+        mes.style.display = visivel ? "block" : "none";
+        if (visivel) encontrou = true;
     });
 
     document.getElementById("sem-resultados").style.display =
