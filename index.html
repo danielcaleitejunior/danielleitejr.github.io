@@ -23,12 +23,12 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
-    color: #333;
+    color: #2f2f2f;
 }
 
 /* ===== HEADER ===== */
 header {
-    background: linear-gradient(160deg, #082235, #0a3d62);
+    background: linear-gradient(160deg, #1f1f1f, #2f2f2f);
     color: white;
     padding: 14px 16px;
 }
@@ -62,7 +62,7 @@ header img {
 .header-texto p {
     margin: 0;
     font-size: clamp(13px, 2.5vw, 15px);
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .busca {
@@ -90,8 +90,8 @@ header img {
 
 .mes h2 {
     font-size: 18px;
-    color: #0a3d62;
-    border-left: 5px solid #0a3d62;
+    color: #1f1f1f;
+    border-left: 5px solid #2f2f2f;
     padding-left: 10px;
 }
 
@@ -104,12 +104,13 @@ header img {
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     cursor: pointer;
     position: relative;
+    transition: background 0.2s ease;
 }
 
 .prova h3 {
     margin: 0 0 6px;
     font-size: 17px;
-    color: #0a3d62;
+    color: #1f1f1f;
 }
 
 .prova p {
@@ -119,24 +120,23 @@ header img {
 }
 
 .prova:hover {
-    background: #eaf3ff;
+    background: #f2f2f2;
 }
 
 /* Destaque anos */
 .prova.destaque-anos {
-    background-color: #d35400;
+    background-color: #2f2f2f;
 }
 
 .prova.destaque-anos h3,
 .prova.destaque-anos p {
-    color: #fff;
+    color: #ffffff;
 }
 
 /* ===== TEXTO OCULTO PARA BUSCA ===== */
 .prova span[aria-hidden="true"] {
     position: absolute;
     left: -9999px;
-    top: 0;
 }
 
 /* ===== BOTÃO TOPO ===== */
@@ -144,7 +144,7 @@ header img {
     position: fixed;
     bottom: 18px;
     right: 18px;
-    background: #0a3d62;
+    background: #2f2f2f;
     color: white;
     width: 46px;
     height: 46px;
@@ -159,7 +159,7 @@ header img {
 
 /* ===== RODAPÉ ===== */
 footer {
-    background: #0a3d62;
+    background: #1f1f1f;
     color: white;
     text-align: center;
     padding: 22px 12px;
@@ -167,7 +167,6 @@ footer {
     margin-top: 40px;
 }
 
-/* Botão Instagram */
 .footer-social {
     margin-top: 10px;
     display: flex;
@@ -180,7 +179,7 @@ footer {
     gap: 8px;
     padding: 10px 16px;
     background: #ffffff;
-    color: #0a3d62;
+    color: #2f2f2f;
     border-radius: 999px;
     font-size: 14px;
     font-weight: 600;
@@ -237,30 +236,19 @@ footer {
         <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/','_blank')">
             <h3>🏃 Treino em Nogueira - Petrópolis - RJ</h3>
             <p>21/01/2026 — Abrir galeria</p>
-
-            <span aria-hidden="true">
-                janeiro nogueira quarta-feira quarta Estrada União Indústria 
-            </span>
+            <span aria-hidden="true">janeiro nogueira petropolis treino estrada</span>
         </div>
-    </div>
 
         <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')">
             <h3>🏃 Ranking das Estações de Trilhas de Juiz de Fora - Corrida do Verão - MG</h3>
             <p>18/01/2026 — Abrir galeria</p>
-
-            <span aria-hidden="true">
-                janeiro domingo torreões  jf juiz de fora corrida running
-            </span>
+            <span aria-hidden="true">janeiro juiz de fora jf trilha corrida</span>
         </div>
-    </div>
 
-    <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
+        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
             <h3>🏃 Movimenta Juiz de Fora - Trilhas - MG</h3>
             <p>18/01/2026 — Abrir galeria</p>
-
-            <span aria-hidden="true">
-                janeiro domingo treino via são pedro jf juiz de fora trilha torreões corrida running
-            </span>
+            <span aria-hidden="true">janeiro jf trilha treino são pedro</span>
         </div>
     </div>
 
@@ -270,10 +258,7 @@ footer {
         <div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
             <h3>🚴🏃🏊 2025 e anteriores</h3>
             <p>Galerias antigas</p>
-
-            <span aria-hidden="true">
-                2025 2024 2023 23 24 provas antigas eventos fotos arquivo histórico
-            </span>
+            <span aria-hidden="true">2025 2024 2023 arquivos provas antigas</span>
         </div>
     </div>
 
