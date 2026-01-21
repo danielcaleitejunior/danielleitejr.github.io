@@ -7,86 +7,82 @@
 <title>Fotos das Provas e Treinos | Foto, Mar e Aventuras</title>
 
 <meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://danielleitejr.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
+<meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
+<meta property="og:image" content="https://danielleitejr.com.br/logo.png">
+<meta property="og:locale" content="pt_BR">
 
 <style>
 /* =====================================================
    VARIÁVEIS – IDENTIDADE FOTO, MAR E AVENTURAS
 ===================================================== */
 :root {
-    --azul-topo: #04131f;
-    --azul-escuro: #082235;
     --azul: #0a3d62;
-    --azul-claro: #0f4c75;
-
+    --azul-escuro: #061a2b;
     --laranja: #f4a261;
 
+    --bg-gradiente: linear-gradient(
+        180deg,
+        #0a3d62 0%,
+        #0c456f 40%,
+        #0a3d62 100%
+    );
+
     --texto: #ffffff;
-    --card: rgba(255,255,255,0.96);
-    --texto-card: #0a3d62;
+    --card: rgba(255,255,255,0.95);
+    --texto-card: #1f2a33;
 }
 
 /* DARK MODE – FOTOGRÁFICO */
 [data-theme="dark"] {
-    --card: rgba(10,42,68,0.88);
-    --texto-card: #ffffff;
+    --bg-gradiente: linear-gradient(
+        180deg,
+        #020c14 0%,
+        #04121d 40%,
+        #020c14 100%
+    );
+    --card: rgba(8,24,38,0.85);
+    --texto-card: #e8f1f8;
 }
 
 /* =====================================================
-   BASE + DEGRADÊ CONTÍNUO
+   BASE + MICROFADE
 ===================================================== */
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background: var(--bg-gradiente);
     color: var(--texto);
-    background: linear-gradient(
-        180deg,
-        var(--azul-topo) 0%,
-        var(--azul-escuro) 35%,
-        var(--azul) 70%,
-        var(--azul-claro) 100%
-    );
-    transition: background .6s ease;
-    position: relative;
-    overflow-x: hidden;
+    transition: background .6s ease, color .4s ease;
 }
 
-/* =====================================================
-   TEXTURA FOTOGRÁFICA IMPERCEPTÍVEL
-===================================================== */
+/* TEXTURA FOTOGRÁFICA SUTIL */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E");
-    opacity: 0.035;
-    mix-blend-mode: overlay;
-    z-index: 0;
-}
-
-/* MICROFADE */
-body, header, footer, .prova, .instagram-float {
-    transition: background .35s ease, color .35s ease, transform .25s ease;
 }
 
 /* =====================================================
    HEADER
 ===================================================== */
-header {
-    padding: 16px;
-    position: relative;
-    z-index: 1;
-}
+header { padding: 16px; }
 
 .header-content {
     max-width: 1100px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
     align-items: center;
+    gap: 14px;
 }
 
 header img {
@@ -96,121 +92,92 @@ header img {
 .header-texto h1 {
     margin: 0;
     font-size: 18px;
-    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .header-texto p {
     margin: 2px 0;
     font-size: 14px;
-    opacity: .9;
+}
+
+.autor { font-size: 13px; opacity: .85; }
+
+/* BUSCA CENTRAL */
+.busca {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
 }
 
 .busca input {
+    max-width: 420px;
     width: 100%;
-    padding: 12px 14px;
-    border-radius: 14px;
+    padding: 14px 18px;
+    border-radius: 999px;
     border: none;
+    font-size: 15px;
 }
 
 /* =====================================================
-   CONTAINER
+   CONTEÚDO
 ===================================================== */
 .container {
     max-width: 900px;
-    margin: 28px auto;
-    padding: 18px;
-    background: rgba(0,0,0,0.12);
-    border-radius: 26px;
-    position: relative;
-    z-index: 1;
+    margin: auto;
+    padding: 20px 16px 90px;
 }
 
-/* =====================================================
-   MESES
-===================================================== */
-.mes {
-    margin-bottom: 30px;
-}
+.mes { margin-bottom: 36px; }
 
 .mes h2 {
-    border-left: 5px solid #ffffff;
-    padding-left: 10px;
     font-size: 18px;
+    border-left: 5px solid rgba(255,255,255,.6);
+    padding-left: 10px;
 }
 
 /* =====================================================
-   CARD DE PROVA
+   CARD PROVA
 ===================================================== */
 .prova {
     background: var(--card);
+    color: var(--texto-card);
     padding: 18px;
     border-radius: 18px;
     margin-bottom: 14px;
-    box-shadow: 0 12px 32px rgba(0,0,0,.35);
     cursor: pointer;
 }
 
-.prova h3 {
-    margin: 0 0 6px;
-    font-size: 16px;
-    color: var(--texto-card);
-}
-
-.prova p {
-    margin: 0;
-    font-size: 14px;
-    color: var(--texto-card);
-    opacity: .85;
-}
-
-/* 🔶 PROVAS ANTERIORES – ÚNICO LARANJA */
+/* PROVAS ANTERIORES – ÚNICO LARANJA */
 .prova.destaque-anos {
     background: var(--laranja);
-}
-.prova.destaque-anos h3,
-.prova.destaque-anos p {
-    color: #ffffff;
+    color: #fff;
 }
 
 /* =====================================================
-   FOOTER
-===================================================== */
-footer {
-    text-align: center;
-    padding: 28px 12px;
-    position: relative;
-    z-index: 1;
-}
-
-/* =====================================================
-   INSTAGRAM FLUTUANTE – APENAS MOBILE
+   BOTÃO INSTAGRAM – MOBILE
 ===================================================== */
 .instagram-float {
     position: fixed;
     right: 16px;
     bottom: 16px;
-    padding: 12px 18px;
-    background: #ffffff;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #fff;
     color: var(--azul);
-    border-radius: 999px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 8px 24px rgba(0,0,0,.25);
-    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* DARK */
 [data-theme="dark"] .instagram-float {
     background: var(--azul);
-    color: #ffffff;
+    color: #fff;
 }
 
-/* 🚫 ESCONDE NO DESKTOP */
 @media (min-width: 768px) {
-    .instagram-float {
-        display: none;
-    }
+    .instagram-float { display: none; }
 }
 </style>
 </head>
@@ -224,92 +191,109 @@ footer {
 <div class="header-texto">
 <h1>Foto, Mar e Aventuras</h1>
 <p>Fotos das Provas e Treinos</p>
-<p>Fotografia por <strong>Daniel Leite Jr</strong></p>
+<p class="autor">Fotografia por <strong>Daniel Leite Jr</strong></p>
 </div>
 
-<input id="busca" placeholder="Buscar prova, cidade ou mês...">
+<div class="busca">
+<input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+</div>
 </div>
 </header>
 
 <div class="container">
 
-<!-- ==================================================
-     📅 JANEIRO 2026
-     ⚠️ NÃO APAGAR A DIV .mes
-================================================== -->
+<!-- =========================================================
+     🧭 GUIA IMPORTANTE – LEIA ANTES DE EDITAR
+
+     ✅ NÃO apague provas antigas
+     ✅ NÃO altere os links existentes
+     ✅ Para adicionar prova:
+        1. Copie um bloco .prova existente
+        2. Cole DENTRO do mês correto
+        3. Altere APENAS:
+           - Link
+           - Título
+           - Data
+           - data-keywords
+
+     ✅ Para novo mês:
+        - Duplique um bloco <div class="mes">
+        - Altere o título do mês
+========================================================= -->
+
 <div class="mes">
 <h2>Janeiro 2026</h2>
 
-<!-- 📌 DUPLIQUE ESTE BLOCO PARA NOVAS PROVAS -->
 <div class="prova"
-     onclick="window.open('https://danielleitejr.fotop.com/','_blank')"
-     data-keywords="janeiro 2026 treino nogueira petrópolis">
-    <h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
-    <p>21/01/2026 — Abrir galeria</p>
+onclick="window.open('https://danielleitejr.fotop.com/','_blank')"
+data-keywords="janeiro 2026 nogueira petropolis treino">
+<h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
+<p>21/01/2026 — Abrir galeria</p>
 </div>
 
 <div class="prova"
-     onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')"
-     data-keywords="janeiro 2026 juiz de fora corrida verão">
-    <h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
-    <p>18/01/2026 — Abrir galeria</p>
+onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')"
+data-keywords="janeiro 2026 juiz de fora corrida verao">
+<h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
+<p>18/01/2026 — Abrir galeria</p>
 </div>
 
 <div class="prova"
-     onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')"
-     data-keywords="janeiro 2026 jf trilha treino">
-    <h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
-    <p>18/01/2026 — Abrir galeria</p>
+onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')"
+data-keywords="janeiro 2026 trilha jf treino">
+<h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
+<p>18/01/2026 — Abrir galeria</p>
 </div>
 
-<!-- ==================================================
-     🧩 MODELO INVISÍVEL DE PROVA
-     ➜ COPIAR / COLAR QUANDO PRECISAR
-     ➜ NÃO APARECE NO SITE
-================================================== -->
-<!--
+<!-- =====================================================
+     🧩 MODELO INVISÍVEL DE PROVA (COPIAR E COLAR)
+     ⚠️ ESTE BLOCO NÃO APARECE NO SITE
+=====================================================
+
 <div class="prova"
-     onclick="window.open('LINK_DA_GALERIA','_blank')"
-     data-keywords="mes ano cidade tipo">
-    <h3>🏃 Nome da prova – Cidade / UF</h3>
-    <p>DD/MM/AAAA — Abrir galeria</p>
-</div>
--->
+onclick="window.open('LINK_DA_GALERIA','_blank')"
+data-keywords="mes ano cidade tipo">
+<h3>🏃 NOME DA PROVA – CIDADE / UF</h3>
+<p>DD/MM/AAAA — Abrir galeria</p>
 </div>
 
-<!-- ==================================================
-     📁 PROVAS ANTERIORES
-================================================== -->
+===================================================== -->
+</div>
+
 <div class="mes">
 <h2>2025 e anteriores</h2>
 
 <div class="prova destaque-anos"
-     onclick="window.open('https://danielleitejr.fotop.com','_blank')">
-    <h3>🚴🏃🏊 2025 e anteriores</h3>
-    <p>Galerias antigas</p>
+onclick="window.open('https://danielleitejr.fotop.com','_blank')">
+<h3>🚴🏃🏊 Provas anteriores</h3>
+<p>Galerias históricas</p>
 </div>
 </div>
 
 </div>
 
-<footer>
-<p style="opacity:.6;font-size:12px;">© 2026 Foto, Mar e Aventuras</p>
-</footer>
-
-<!-- 📸 INSTAGRAM – MOBILE -->
 <a class="instagram-float"
-   href="https://www.instagram.com/fotomareaventuras"
-   target="_blank">
-📸 Instagram
+href="https://www.instagram.com/fotomareaventuras"
+target="_blank"
+aria-label="Instagram">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+xmlns="http://www.w3.org/2000/svg">
+<rect x="3" y="3" width="18" height="18" rx="5"
+stroke="currentColor" stroke-width="2"/>
+<circle cx="12" cy="12" r="4"
+stroke="currentColor" stroke-width="2"/>
+<circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+</svg>
 </a>
 
 <script>
-/* BUSCA – NÃO REMOVER */
-document.getElementById("busca").addEventListener("input", e => {
-    const termo = e.target.value.toLowerCase();
-    document.querySelectorAll(".prova").forEach(prova => {
-        const chaves = prova.dataset.keywords || "";
-        prova.style.display = chaves.includes(termo) ? "block" : "none";
+/* BUSCA */
+const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+document.getElementById("busca").addEventListener("input", function () {
+    const termo = normalizar(this.value);
+    document.querySelectorAll(".prova").forEach(p => {
+        const texto = p.dataset.keywords || p.innerText;
+        p.style.display = normalizar(texto).includes(termo) ? "block" : "none";
     });
 });
 </script>
