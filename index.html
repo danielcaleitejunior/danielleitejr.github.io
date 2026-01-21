@@ -79,7 +79,7 @@ header {
     position: relative;
     z-index: 2;
     padding: 16px;
-    color: #ffffff; /* GARANTIA TEXTO BRANCO */
+    color: #ffffff;
 }
 
 .header-content {
@@ -124,6 +124,7 @@ header img {
     flex: 1 1 100%;
     display: flex;
     justify-content: center;
+    margin-top: 12px;
 }
 
 .busca input {
@@ -132,15 +133,6 @@ header img {
     border-radius: 999px;
     border: none;
     font-size: 15px;
-}
-
-/* ---------- TOGGLE ---------- */
-.theme-toggle {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
 }
 
 /* ---------- CONTEÚDO ---------- */
@@ -161,6 +153,8 @@ header img {
     color: white;
     border-left: 4px solid white;
     padding-left: 10px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    transition: color 0.3s ease;
 }
 
 /* =====================================================
@@ -177,7 +171,7 @@ header img {
     border-radius: 16px;
     margin-bottom: 18px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: opacity 0.15s ease;
+    transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .prova:hover {
@@ -220,15 +214,10 @@ footer {
     text-align: center;
     padding: 26px 12px 80px;
     color: white;
+    font-size: 12px;
 }
 
 /* ---------- INSTAGRAM FLUTUANTE (MOBILE) ---------- */
-/* ===============================
-   BOTÃO INSTAGRAM — VERSÃO 1.0
-   Isolado da paleta geral
-   NÃO ALTERAR SEM CRIAR NOVA VERSÃO
-================================= */
-
 .instagram-float {
   position: fixed;
   bottom: 20px;
@@ -289,6 +278,11 @@ footer {
 @media (min-width: 768px) {
     #topo { display: none !important; }
 }
+
+/* ---------- MODELO INVISÍVEL DE PROVA (DUPLICAR SEGURAMENTE) ---------- */
+.prova.model {
+    display: none; /* NÃO APARECE, apenas para copiar/duplicar */
+}
 </style>
 </head>
 
@@ -302,7 +296,6 @@ footer {
       <p>Fotos das Provas e Treinos</p>
       <p class="autor">Fotografia por <strong>Daniel Leite Jr</strong></p>
     </div>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
   </div>
 
   <div class="busca">
@@ -333,6 +326,13 @@ footer {
   <p>18/01/2026 — Abrir galeria</p>
   <span>movimenta domingo trilha jf</span>
 </div>
+
+<!-- Modelo invisível de prova -->
+<div class="prova model">
+  <h3>TÍTULO DA PROVA</h3>
+  <p>DATA — Abrir galeria</p>
+  <span>palavras-chave</span>
+</div>
 </div>
 
 <!-- ================= PROVAS ANTERIORES ================= -->
@@ -342,7 +342,7 @@ footer {
 <div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
   <h3>🚴🏃🏊 2025 e anteriores</h3>
   <p>Galerias antigas</p>
-   <span>2024 2023 24 23</span></span>
+  <span>2024 2023 24 23</span>
 </div>
 </div>
 
@@ -353,7 +353,6 @@ footer {
 </footer>
 
 <!-- BOTÃO INSTAGRAM — FIXO MOBILE -->
-<!-- VERSÃO 1.0 | NÃO ALTERAR -->
 <a
   href="https://instagram.com/fotomareaventuras"
   target="_blank"
@@ -373,7 +372,6 @@ footer {
   </svg>
 </a>
 
-
 <!-- VOLTAR AO TOPO -->
 <div id="topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
@@ -387,15 +385,14 @@ document.getElementById("busca").addEventListener("input", function(){
   });
 });
 
-/* DARK / LIGHT */
-const toggle = document.getElementById("themeToggle");
-const saved = localStorage.getItem("theme");
-if(saved) document.documentElement.setAttribute("data-theme", saved);
-toggle.onclick = ()=>{
-  const t = document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
-  document.documentElement.setAttribute("data-theme", t);
-  localStorage.setItem("theme", t);
-};
+/* DARK / LIGHT AUTOMÁTICO */
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const savedTheme = localStorage.getItem("theme");
+if(savedTheme){
+    document.documentElement.setAttribute("data-theme", savedTheme);
+}else if(prefersDark){
+    document.documentElement.setAttribute("data-theme", "dark");
+}
 
 /* VOLTAR AO TOPO */
 window.addEventListener("scroll",()=>{
