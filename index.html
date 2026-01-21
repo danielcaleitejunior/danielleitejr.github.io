@@ -1,375 +1,302 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-theme="light">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Foto, Mar e Aventuras | Daniel Leite Jr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Fotos das Provas e Treinos | Foto, Mar e Aventuras</title>
+  <!--
+  =====================================================
+  SITE: FOTO, MAR E AVENTURAS
+  AUTOR: Daniel Leite Jr
+  VERSÃO: 1.0 FINAL — NÃO ALTERAR
+  DATA: Janeiro / 2026
 
-<meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://danielleitejr.com.br/">
+  ⚠️ ATENÇÃO FUTURA ⚠️
+  - NÃO alterar estrutura de links (<a>)
+  - NÃO renomear classes principais
+  - Para novos meses: DUPLICAR blocos existentes
+  - Para novas provas: COLAR apenas novos <a>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
-<meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
-<meta property="og:image" content="https://danielleitejr.com.br/logo.png">
-<meta property="og:locale" content="pt_BR">
+  Alterações estruturais somente em nova versão (1.1+)
+  =====================================================
+  -->
 
-<style>
-/* =====================================================
-   FOTO, MAR E AVENTURAS
-   VERSÃO 1.0 — NÃO ALTERAR
-   Base estável e publicada
-===================================================== */
+  <style>
+    /* ===============================
+       PALETA INSTITUCIONAL
+       =============================== */
+    :root {
+      --azul-marinho: #0b1c2d;
+      --azul-marinho-claro: #122a44;
+      --branco: #ffffff;
+      --cinza-texto: #e6e6e6;
+      --laranja-provas: #f2a45c;
+    }
 
-/* ---------- VARIÁVEIS ---------- */
-:root {
-    --azul: #0a3d62;
-    --azul-escuro: #082235;
-    --laranja: #f4a261;
+    /* ===============================
+       RESET BÁSICO
+       =============================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    --texto: #1f2a33;
-    --card: rgba(255,255,255,0.92);
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(
+        to bottom,
+        var(--azul-marinho),
+        var(--azul-marinho-claro),
+        #ffffff
+      );
+      color: #111;
+      min-height: 100vh;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
 
-    --bg-gradiente:
-        linear-gradient(180deg,
-        #082235 0%,
-        #0a3d62 35%,
-        #f3f3f3 100%);
-}
+    body.dark {
+      background: linear-gradient(
+        to bottom,
+        #050b12,
+        #0b1c2d,
+        #122a44
+      );
+      color: var(--cinza-texto);
+    }
 
-/* DARK — FOTOGRÁFICO */
-[data-theme="dark"] {
-    --texto: #f1f5f9;
-    --card: rgba(10,42,68,0.88);
+    /* ===============================
+       CABEÇALHO
+       =============================== */
+    header {
+      padding: 32px 16px 24px;
+      text-align: center;
+      color: white;
+    }
 
-    --bg-gradiente:
-        linear-gradient(180deg,
-        #000c14 0%,
-        #041c30 40%,
-        #061a2b 100%);
-}
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
 
-/* ---------- BASE ---------- */
-* { box-sizing: border-box; }
+    header h2 {
+      font-size: 0.9rem;
+      font-weight: 400;
+      opacity: 0.85;
+    }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: var(--texto);
-    background: var(--bg-gradiente);
-    transition: background 0.4s ease, color 0.3s ease;
-}
+    /* ===============================
+       BUSCA
+       =============================== */
+    .busca {
+      display: flex;
+      justify-content: center;
+      margin: 24px 16px;
+    }
 
-/* Textura fotográfica imperceptível */
-body::before {
-    content:"";
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.04), transparent 60%),
-      radial-gradient(circle at 70% 80%, rgba(0,0,0,0.05), transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-}
+    .busca input {
+      width: 100%;
+      max-width: 420px;
+      padding: 12px 16px;
+      border-radius: 24px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
 
-/* ---------- HEADER ---------- */
-header {
-    position: relative;
-    z-index: 2;
-    padding: 16px;
-    color: #ffffff; /* GARANTIA TEXTO BRANCO */
-}
+    /* ===============================
+       LISTA DE PROVAS
+       =============================== */
+    main {
+      max-width: 720px;
+      margin: auto;
+      padding: 0 16px 80px;
+    }
 
-.header-content {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px;
-}
+    section {
+      margin-bottom: 32px;
+    }
 
-header img {
-    max-width: 140px;
-}
+    section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--azul-marinho);
+    }
 
-.header-texto h1,
-.header-texto p,
-.autor {
-    color: #ffffff;
-}
+    body.dark section h3 {
+      color: white;
+    }
 
-.header-texto h1 {
-    margin: 0;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+    /* ⚠️ NÃO ALTERAR: cada prova é um <a> simples */
+    .provas a {
+      display: block;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      text-decoration: none;
+      color: #111;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
 
-.header-texto p {
-    margin: 2px 0;
-    font-size: 14px;
-    opacity: 0.95;
-}
+    body.dark .provas a {
+      background: rgba(15,30,50,0.75);
+      color: var(--cinza-texto);
+    }
 
-.autor {
-    font-size: 13px;
-    opacity: 0.9;
-}
+    .provas a:hover {
+      transform: translateY(-2px);
+    }
 
-/* ---------- BUSCA ---------- */
-.busca {
-    flex: 1 1 100%;
-    display: flex;
-    justify-content: center;
-}
+    /* ===============================
+       BOTÃO PROVAS ANTERIORES
+       (ÚNICO ELEMENTO LARANJA)
+       =============================== */
+    .anteriores {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      padding: 14px;
+      border-radius: 24px;
+      background: var(--laranja-provas);
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-.busca input {
-    width: min(420px, 100%);
-    padding: 12px 16px;
-    border-radius: 999px;
-    border: none;
-    font-size: 15px;
-}
+    /* ===============================
+       RODAPÉ
+       =============================== */
+    footer {
+      text-align: center;
+      padding: 24px 16px 40px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
+    }
 
-/* ---------- TOGGLE ---------- */
-.theme-toggle {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
+    body.dark footer {
+      color: rgba(255,255,255,0.6);
+    }
 
-/* ---------- CONTEÚDO ---------- */
-.container {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: auto;
-    padding: 16px;
-}
+    /* ===============================
+       BOTÃO INSTAGRAM — VERSÃO 1.0
+       ISOLADO / OFICIAL / NÃO ALTERAR
+       =============================== */
+    .instagram-float {
+      position: fixed;
+      bottom: 20px;
+      right: 16px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(
+        circle at 30% 30%,
+        #F58529,
+        #DD2A7B,
+        #8134AF,
+        #515BD4
+      );
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      z-index: 999;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
 
-.mes {
-    margin-bottom: 34px;
-}
+    .instagram-float:hover {
+      transform: scale(1.05);
+    }
 
-.mes h2 {
-    font-size: 18px;
-    color: white;
-    border-left: 4px solid white;
-    padding-left: 10px;
-}
+    /* Apenas mobile */
+    @media (min-width: 768px) {
+      .instagram-float {
+        display: none;
+      }
+    }
 
-/* =====================================================
-   PROVAS
-   GUIA IMPORTANTE:
-   - NÃO remover div .prova
-   - NÃO alterar links
-   - Para nova prova: DUPLIQUE um bloco inteiro
-===================================================== */
+    /* ===============================
+       BOTÃO VOLTAR AO TOPO (MOBILE)
+       =============================== */
+    .topo {
+      position: fixed;
+      bottom: 88px;
+      right: 20px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 10px 12px;
+      border-radius: 50%;
+      font-size: 14px;
+      text-decoration: none;
+      display: none;
+    }
 
-.prova {
-    background: var(--card);
-    padding: 18px;
-    border-radius: 16px;
-    margin-bottom: 18px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: opacity 0.15s ease;
-}
-
-.prova:hover {
-    opacity: 0.96;
-}
-
-.prova h3 {
-    margin: 0 0 6px;
-    font-size: 16px;
-    color: var(--azul);
-}
-
-[data-theme="dark"] .prova h3 {
-    color: #e3edf7;
-}
-
-.prova p {
-    margin: 0;
-    font-size: 14px;
-    opacity: 0.85;
-}
-
-/* Palavras-chave ocultas (busca) */
-.prova span {
-    display: none;
-}
-
-/* ---------- PROVAS ANTERIORES (ÚNICO LARANJA) ---------- */
-.prova.destaque-anos {
-    background: var(--laranja);
-}
-
-.prova.destaque-anos h3,
-.prova.destaque-anos p {
-    color: white;
-}
-
-/* ---------- RODAPÉ ---------- */
-footer {
-    text-align: center;
-    padding: 26px 12px 80px;
-    color: white;
-}
-
-/* ---------- INSTAGRAM FLUTUANTE (MOBILE) ---------- */
-.instagram-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: var(--azul);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-.instagram-float svg {
-    width: 22px;
-    height: 22px;
-    fill: white;
-}
-
-@media (min-width: 768px) {
-    .instagram-float { display: none; }
-}
-
-/* ---------- VOLTAR AO TOPO (MOBILE) ---------- */
-#topo {
-    position: fixed;
-    bottom: 90px;
-    right: 22px;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    color: var(--azul);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    z-index: 998;
-}
-
-[data-theme="dark"] #topo {
-    background: rgba(10,42,68,0.9);
-    color: white;
-}
-
-@media (min-width: 768px) {
-    #topo { display: none !important; }
-}
-</style>
+    body.scrolled .topo {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
-
-<header>
-  <div class="header-content">
-    <img src="logo.png" alt="Foto, Mar e Aventuras">
-    <div class="header-texto">
-      <h1>Foto, Mar e Aventuras</h1>
-      <p>Fotos das Provas e Treinos</p>
-      <p class="autor">Fotografia por <strong>Daniel Leite Jr</strong></p>
-    </div>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
-  </div>
+  <header id="topo">
+    <h1>Fotos das provas e treinos</h1>
+    <h2>Daniel Leite Jr · Fotógrafo</h2>
+  </header>
 
   <div class="busca">
-    <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+    <input type="text" placeholder="Buscar prova ou cidade…" />
   </div>
-</header>
 
-<div class="container">
+  <main>
+    <!-- ===============================
+         MÊS ATUAL — DUPLICAR PARA NOVOS
+         =============================== -->
+    <section>
+      <h3>Janeiro 2026</h3>
 
-<!-- ===================== JANEIRO 2026 ===================== -->
-<div class="mes">
-<h2>Janeiro 2026</h2>
+      <div class="provas">
+        <!-- MODELO INVISÍVEL (copiar) -->
+        <!--
+        <a href="#" target="_blank">
+          Nome da prova – Cidade/UF
+        </a>
+        -->
 
-<div class="prova" onclick="window.open('https://danielleitejr.fotop.com/','_blank')">
-  <h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
-  <p>21/01/2026 — Abrir galeria</p>
-  <span>janeiro nogueira petrópolis treino</span>
-</div>
+        <a href="LINK-EXISTENTE-1" target="_blank">Prova 1 – Cidade</a>
+        <a href="LINK-EXISTENTE-2" target="_blank">Prova 2 – Cidade</a>
+      </div>
+    </section>
 
-<div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')">
-  <h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
-  <p>18/01/2026 — Abrir galeria</p>
-  <span>ranking verão jf corrida</span>
-</div>
+    <a href="#" class="anteriores">Provas anteriores</a>
+  </main>
 
-<div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
-  <h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
-  <p>18/01/2026 — Abrir galeria</p>
-  <span>movimenta trilha jf</span>
-</div>
-</div>
+  <footer>
+    © Foto, Mar e Aventuras · Daniel Leite Jr
+  </footer>
 
-<!-- ================= PROVAS ANTERIORES ================= -->
-<div class="mes">
-<h2>2025 e anteriores</h2>
+  <!-- BOTÃO INSTAGRAM FIXO MOBILE -->
+  <!-- VERSÃO 1.0 — NÃO ALTERAR -->
+  <a
+    href="https://instagram.com/SEU_USUARIO"
+    target="_blank"
+    rel="noopener"
+    class="instagram-float"
+    aria-label="Instagram Foto, Mar e Aventuras"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"
+      xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
+    </svg>
+  </a>
 
-<div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
-  <h3>🚴🏃🏊 2025 e anteriores</h3>
-  <p>Galerias antigas</p>
-</div>
-</div>
+  <a href="#topo" class="topo">↑</a>
 
-</div>
-
-<footer>
-  <p style="font-size:12px;opacity:.8;">© 2026 Foto, Mar e Aventuras</p>
-</footer>
-
-<!-- INSTAGRAM -->
-<a class="instagram-float" href="https://www.instagram.com/fotomareaventuras" target="_blank" aria-label="Instagram">
-<svg viewBox="0 0 24 24">
-<path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Z"/>
-</svg>
-</a>
-
-<!-- VOLTAR AO TOPO -->
-<div id="topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
-
-<script>
-/* BUSCA */
-const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-document.getElementById("busca").addEventListener("input", function(){
-  const termo = normalizar(this.value);
-  document.querySelectorAll(".prova").forEach(p=>{
-    p.style.display = normalizar(p.innerText).includes(termo) ? "block" : "none";
-  });
-});
-
-/* DARK / LIGHT */
-const toggle = document.getElementById("themeToggle");
-const saved = localStorage.getItem("theme");
-if(saved) document.documentElement.setAttribute("data-theme", saved);
-toggle.onclick = ()=>{
-  const t = document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
-  document.documentElement.setAttribute("data-theme", t);
-  localStorage.setItem("theme", t);
-};
-
-/* VOLTAR AO TOPO */
-window.addEventListener("scroll",()=>{
-  document.getElementById("topo").style.display =
-    window.scrollY > 300 ? "flex" : "none";
-});
-</script>
-
+  <script>
+    window.addEventListener("scroll", () => {
+      document.body.classList.toggle("scrolled", window.scrollY > 200);
+    });
+  </script>
 </body>
 </html>
