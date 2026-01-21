@@ -18,8 +18,12 @@
 
 <style>
 /* =====================================================
-   IDENTIDADE — FOTO, MAR E AVENTURAS
+   FOTO, MAR E AVENTURAS
+   VERSÃO 1.0 — NÃO ALTERAR
+   Base estável e publicada
 ===================================================== */
+
+/* ---------- VARIÁVEIS ---------- */
 :root {
     --azul: #0a3d62;
     --azul-escuro: #082235;
@@ -47,9 +51,7 @@
         #061a2b 100%);
 }
 
-/* =====================================================
-   BASE
-===================================================== */
+/* ---------- BASE ---------- */
 * { box-sizing: border-box; }
 
 body {
@@ -60,7 +62,7 @@ body {
     transition: background 0.4s ease, color 0.3s ease;
 }
 
-/* textura fotográfica imperceptível */
+/* Textura fotográfica imperceptível */
 body::before {
     content:"";
     position: fixed;
@@ -72,13 +74,12 @@ body::before {
     z-index: 0;
 }
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* ---------- HEADER ---------- */
 header {
     position: relative;
     z-index: 2;
     padding: 16px;
+    color: #ffffff; /* GARANTIA TEXTO BRANCO */
 }
 
 .header-content {
@@ -94,6 +95,12 @@ header img {
     max-width: 140px;
 }
 
+.header-texto h1,
+.header-texto p,
+.autor {
+    color: #ffffff;
+}
+
 .header-texto h1 {
     margin: 0;
     font-size: 18px;
@@ -104,15 +111,15 @@ header img {
 .header-texto p {
     margin: 2px 0;
     font-size: 14px;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
 .autor {
     font-size: 13px;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
-/* BUSCA — CENTRAL */
+/* ---------- BUSCA ---------- */
 .busca {
     flex: 1 1 100%;
     display: flex;
@@ -127,7 +134,7 @@ header img {
     font-size: 15px;
 }
 
-/* TOGGLE */
+/* ---------- TOGGLE ---------- */
 .theme-toggle {
     background: transparent;
     border: none;
@@ -136,9 +143,7 @@ header img {
     cursor: pointer;
 }
 
-/* =====================================================
-   CONTEÚDO
-===================================================== */
+/* ---------- CONTEÚDO ---------- */
 .container {
     position: relative;
     z-index: 2;
@@ -159,19 +164,18 @@ header img {
 }
 
 /* =====================================================
-   CARD PROVA
+   PROVAS
+   GUIA IMPORTANTE:
+   - NÃO remover div .prova
+   - NÃO alterar links
+   - Para nova prova: DUPLIQUE um bloco inteiro
 ===================================================== */
-/* ⚠️ GUIA IMPORTANTE:
-   - NÃO REMOVER a div .prova
-   - NÃO ALTERAR os links
-   - SEMPRE duplicar o bloco inteiro
-*/
 
 .prova {
     background: var(--card);
     padding: 18px;
     border-radius: 16px;
-    margin-bottom: 18px; /* micro-respiro */
+    margin-bottom: 18px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: opacity 0.15s ease;
 }
@@ -196,12 +200,12 @@ header img {
     opacity: 0.85;
 }
 
-/* palavras-chave ocultas */
+/* Palavras-chave ocultas (busca) */
 .prova span {
     display: none;
 }
 
-/* PROVAS ANTERIORES — ÚNICO LARANJA */
+/* ---------- PROVAS ANTERIORES (ÚNICO LARANJA) ---------- */
 .prova.destaque-anos {
     background: var(--laranja);
 }
@@ -211,18 +215,14 @@ header img {
     color: white;
 }
 
-/* =====================================================
-   RODAPÉ
-===================================================== */
+/* ---------- RODAPÉ ---------- */
 footer {
     text-align: center;
     padding: 26px 12px 80px;
     color: white;
 }
 
-/* =====================================================
-   BOTÃO INSTAGRAM — FLUTUANTE MOBILE
-===================================================== */
+/* ---------- INSTAGRAM FLUTUANTE (MOBILE) ---------- */
 .instagram-float {
     position: fixed;
     bottom: 20px;
@@ -247,9 +247,7 @@ footer {
     .instagram-float { display: none; }
 }
 
-/* =====================================================
-   BOTÃO VOLTAR AO TOPO — MOBILE
-===================================================== */
+/* ---------- VOLTAR AO TOPO (MOBILE) ---------- */
 #topo {
     position: fixed;
     bottom: 90px;
@@ -264,7 +262,6 @@ footer {
     justify-content: center;
     font-size: 18px;
     z-index: 998;
-    transition: opacity 0.2s ease;
 }
 
 [data-theme="dark"] #topo {
@@ -298,9 +295,7 @@ footer {
 
 <div class="container">
 
-<!-- ==================================================
-     📅 JANEIRO 2026
-================================================== -->
+<!-- ===================== JANEIRO 2026 ===================== -->
 <div class="mes">
 <h2>Janeiro 2026</h2>
 
@@ -323,9 +318,7 @@ footer {
 </div>
 </div>
 
-<!-- ==================================================
-     📁 PROVAS ANTERIORES
-================================================== -->
+<!-- ================= PROVAS ANTERIORES ================= -->
 <div class="mes">
 <h2>2025 e anteriores</h2>
 
@@ -343,7 +336,9 @@ footer {
 
 <!-- INSTAGRAM -->
 <a class="instagram-float" href="https://www.instagram.com/fotomareaventuras" target="_blank" aria-label="Instagram">
-<svg viewBox="0 0 24 24"><path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Z"/></svg>
+<svg viewBox="0 0 24 24">
+<path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Z"/>
+</svg>
 </a>
 
 <!-- VOLTAR AO TOPO -->
@@ -359,7 +354,7 @@ document.getElementById("busca").addEventListener("input", function(){
   });
 });
 
-/* DARK/LIGHT */
+/* DARK / LIGHT */
 const toggle = document.getElementById("themeToggle");
 const saved = localStorage.getItem("theme");
 if(saved) document.documentElement.setAttribute("data-theme", saved);
