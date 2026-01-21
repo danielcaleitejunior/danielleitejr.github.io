@@ -223,28 +223,45 @@ footer {
 }
 
 /* ---------- INSTAGRAM FLUTUANTE (MOBILE) ---------- */
+/* ===============================
+   BOTÃO INSTAGRAM — VERSÃO 1.0
+   Isolado da paleta geral
+   NÃO ALTERAR SEM CRIAR NOVA VERSÃO
+================================= */
+
 .instagram-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: var(--azul);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
+  position: fixed;
+  bottom: 20px;
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    #F58529,
+    #DD2A7B,
+    #8134AF,
+    #515BD4
+  );
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  z-index: 999;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.instagram-float svg {
-    width: 22px;
-    height: 22px;
-    fill: white;
+.instagram-float:hover {
+  transform: scale(1.05);
 }
 
+/* Apenas mobile */
 @media (min-width: 768px) {
-    .instagram-float { display: none; }
+  .instagram-float {
+    display: none;
+  }
 }
 
 /* ---------- VOLTAR AO TOPO (MOBILE) ---------- */
@@ -334,12 +351,27 @@ footer {
   <p style="font-size:12px;opacity:.8;">© 2026 Foto, Mar e Aventuras</p>
 </footer>
 
-<!-- INSTAGRAM -->
-<a class="instagram-float" href="https://www.instagram.com/fotomareaventuras" target="_blank" aria-label="Instagram">
-<svg viewBox="0 0 24 24">
-<path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Z"/>
-</svg>
+<!-- BOTÃO INSTAGRAM — FIXO MOBILE -->
+<!-- VERSÃO 1.0 | NÃO ALTERAR -->
+<a
+  href="https://instagram.com/SEU_USUARIO"
+  target="_blank"
+  rel="noopener"
+  class="instagram-float"
+  aria-label="Instagram Foto, Mar e Aventuras"
+>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="white"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 013 3v10a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.9a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/>
+  </svg>
 </a>
+
 
 <!-- VOLTAR AO TOPO -->
 <div id="topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
