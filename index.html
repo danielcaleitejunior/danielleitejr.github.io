@@ -23,58 +23,69 @@
 :root {
     --azul: #0a3d62;
     --azul-escuro: #061a2b;
+    --azul-meio: #0c456f;
     --laranja: #f4a261;
-
-    --bg-gradiente: linear-gradient(
-        180deg,
-        #0a3d62 0%,
-        #0c456f 40%,
-        #0a3d62 100%
-    );
 
     --texto: #ffffff;
     --card: rgba(255,255,255,0.95);
     --texto-card: #1f2a33;
 }
 
-/* DARK MODE – FOTOGRÁFICO */
+/* DARK MODE – MAIS FOTOGRÁFICO */
 [data-theme="dark"] {
-    --bg-gradiente: linear-gradient(
-        180deg,
-        #020c14 0%,
-        #04121d 40%,
-        #020c14 100%
-    );
     --card: rgba(8,24,38,0.85);
     --texto-card: #e8f1f8;
 }
 
 /* =====================================================
-   BASE + MICROFADE
+   FUNDO DEGRADÊ CONTÍNUO
 ===================================================== */
-* { box-sizing: border-box; }
+html {
+    background: linear-gradient(
+        180deg,
+        var(--azul-escuro) 0%,
+        var(--azul) 35%,
+        var(--azul-meio) 65%,
+        var(--azul-escuro) 100%
+    );
+    transition: background .8s ease;
+}
+
+[data-theme="dark"] html {
+    background: linear-gradient(
+        180deg,
+        #020c14 0%,
+        #04121d 40%,
+        #061a2b 100%
+    );
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: var(--bg-gradiente);
     color: var(--texto);
-    transition: background .6s ease, color .4s ease;
+    background: transparent;
+    position: relative;
 }
 
-/* TEXTURA FOTOGRÁFICA SUTIL */
+/* TEXTURA FOTOGRÁFICA MUITO SUTIL */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
     pointer-events: none;
+    z-index: 0;
 }
 
 /* =====================================================
    HEADER
 ===================================================== */
-header { padding: 16px; }
+header {
+    padding: 16px;
+    position: relative;
+    z-index: 1;
+}
 
 .header-content {
     max-width: 1100px;
@@ -100,23 +111,27 @@ header img {
     font-size: 14px;
 }
 
-.autor { font-size: 13px; opacity: .85; }
+.autor {
+    font-size: 13px;
+    opacity: .85;
+}
 
 /* BUSCA CENTRAL */
 .busca {
     flex: 1 1 100%;
     display: flex;
     justify-content: center;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .busca input {
-    max-width: 420px;
     width: 100%;
+    max-width: 420px;
     padding: 14px 18px;
     border-radius: 999px;
     border: none;
     font-size: 15px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
 }
 
 /* =====================================================
@@ -125,10 +140,14 @@ header img {
 .container {
     max-width: 900px;
     margin: auto;
-    padding: 20px 16px 90px;
+    padding: 24px 16px 100px;
+    position: relative;
+    z-index: 1;
 }
 
-.mes { margin-bottom: 36px; }
+.mes {
+    margin-bottom: 36px;
+}
 
 .mes h2 {
     font-size: 18px;
@@ -146,16 +165,40 @@ header img {
     border-radius: 18px;
     margin-bottom: 14px;
     cursor: pointer;
+    box-shadow: 0 12px 30px rgba(0,0,0,.28);
+}
+
+.prova h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.prova p {
+    margin: 0;
+    font-size: 14px;
+    opacity: .85;
 }
 
 /* PROVAS ANTERIORES – ÚNICO LARANJA */
 .prova.destaque-anos {
     background: var(--laranja);
-    color: #fff;
+    color: #ffffff;
 }
 
 /* =====================================================
-   BOTÃO INSTAGRAM – MOBILE
+   FOOTER – INTEGRADO AO FUNDO
+===================================================== */
+footer {
+    text-align: center;
+    padding: 40px 16px 90px;
+    font-size: 12px;
+    opacity: .75;
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================================================
+   BOTÃO INSTAGRAM – FLUTUANTE (MOBILE)
 ===================================================== */
 .instagram-float {
     position: fixed;
@@ -164,16 +207,19 @@ header img {
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: #fff;
+    background: #ffffff;
     color: var(--azul);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 14px 34px rgba(0,0,0,.45);
+    z-index: 999;
+    text-decoration: none;
 }
 
 [data-theme="dark"] .instagram-float {
     background: var(--azul);
-    color: #fff;
+    color: #ffffff;
 }
 
 @media (min-width: 768px) {
@@ -203,22 +249,12 @@ header img {
 <div class="container">
 
 <!-- =========================================================
-     🧭 GUIA IMPORTANTE – LEIA ANTES DE EDITAR
+     🧭 GUIA DE SEGURANÇA – NÃO REMOVER
 
-     ✅ NÃO apague provas antigas
-     ✅ NÃO altere os links existentes
-     ✅ Para adicionar prova:
-        1. Copie um bloco .prova existente
-        2. Cole DENTRO do mês correto
-        3. Altere APENAS:
-           - Link
-           - Título
-           - Data
-           - data-keywords
-
-     ✅ Para novo mês:
-        - Duplique um bloco <div class="mes">
-        - Altere o título do mês
+     ✔ NÃO apague provas existentes
+     ✔ NÃO altere links antigos
+     ✔ Para nova prova: copie um bloco .prova
+     ✔ Para novo mês: duplique um bloco .mes
 ========================================================= -->
 
 <div class="mes">
@@ -245,10 +281,8 @@ data-keywords="janeiro 2026 trilha jf treino">
 <p>18/01/2026 — Abrir galeria</p>
 </div>
 
-<!-- =====================================================
-     🧩 MODELO INVISÍVEL DE PROVA (COPIAR E COLAR)
-     ⚠️ ESTE BLOCO NÃO APARECE NO SITE
-=====================================================
+<!--
+🧩 MODELO INVISÍVEL DE PROVA (COPIAR E COLAR)
 
 <div class="prova"
 onclick="window.open('LINK_DA_GALERIA','_blank')"
@@ -256,8 +290,7 @@ data-keywords="mes ano cidade tipo">
 <h3>🏃 NOME DA PROVA – CIDADE / UF</h3>
 <p>DD/MM/AAAA — Abrir galeria</p>
 </div>
-
-===================================================== -->
+-->
 </div>
 
 <div class="mes">
@@ -272,10 +305,14 @@ onclick="window.open('https://danielleitejr.fotop.com','_blank')">
 
 </div>
 
+<footer>
+© 2026 Foto, Mar e Aventuras — Todos os direitos reservados
+</footer>
+
 <a class="instagram-float"
 href="https://www.instagram.com/fotomareaventuras"
 target="_blank"
-aria-label="Instagram">
+aria-label="Instagram Foto, Mar e Aventuras">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
 xmlns="http://www.w3.org/2000/svg">
 <rect x="3" y="3" width="18" height="18" rx="5"
