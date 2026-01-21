@@ -6,22 +6,20 @@
 
 <title>Fotos das Provas e Treinos | Foto, Mar e Aventuras</title>
 
-<meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://danielleitejr.com.br/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
-<meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
-<meta property="og:image" content="https://danielleitejr.com.br/logo.png">
-<meta property="og:locale" content="pt_BR">
-
 <style>
 /* =====================================================
-   VARIÁVEIS – LIGHT (IDENTIDADE)
+   VARIÁVEIS – IDENTIDADE
 ===================================================== */
 :root {
-    --bg: #f3f3f3;
+    --bg-gradiente: linear-gradient(
+        180deg,
+        #082235 0%,
+        #0a3d62 25%,
+        #f3f3f3 55%,
+        #0a3d62 85%,
+        #082235 100%
+    );
+
     --card: #ffffff;
     --texto: #2b2b2b;
 
@@ -32,12 +30,20 @@
 }
 
 /* =====================================================
-   DARK MODE – FOTOGRÁFICO
+   DARK MODE – FOTOGRÁFICO CONTÍNUO
 ===================================================== */
 [data-theme="dark"] {
-    --bg: #050b11;        /* azul-noite */
-    --card: #0b1f33;      /* azul petróleo */
-    --texto: #e6edf3;     /* branco suave */
+    --bg-gradiente: linear-gradient(
+        180deg,
+        #02060a 0%,
+        #050b11 35%,
+        #0b1f33 55%,
+        #050b11 75%,
+        #02060a 100%
+    );
+
+    --card: #0b1f33;
+    --texto: #e6edf3;
 }
 
 /* =====================================================
@@ -46,10 +52,9 @@
 * {
     box-sizing: border-box;
     transition:
-        background-color .35s ease,
-        color .35s ease,
-        border-color .35s ease,
-        box-shadow .35s ease,
+        background-color .4s ease,
+        color .4s ease,
+        box-shadow .4s ease,
         transform .25s ease;
 }
 
@@ -59,21 +64,17 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: var(--bg);
+    background: var(--bg-gradiente);
     color: var(--texto);
 }
 
 /* =====================================================
-   HEADER
+   HEADER (INTEGRADO)
 ===================================================== */
 header {
-    background: linear-gradient(160deg, var(--azul-escuro), var(--azul));
+    background: transparent;
     color: #ffffff;
-    padding: 14px 16px;
-}
-
-[data-theme="dark"] header {
-    background: linear-gradient(160deg, #02060a, #081a2c);
+    padding: 18px 16px;
 }
 
 .header-content {
@@ -87,11 +88,6 @@ header {
 
 header img {
     max-width: 140px;
-    width: 100%;
-}
-
-.header-texto {
-    flex: 1 1 220px;
 }
 
 .header-texto h1 {
@@ -107,13 +103,9 @@ header img {
     opacity: .9;
 }
 
-.header-texto .autor {
+.autor {
     font-size: 13px;
     opacity: .85;
-}
-
-.busca {
-    flex: 1 1 260px;
 }
 
 .busca input {
@@ -121,12 +113,11 @@ header img {
     padding: 12px 14px;
     border-radius: 14px;
     border: none;
-    font-size: 15px;
 }
 
-/* BOTÃO DARK/LIGHT */
+/* BOTÃO TEMA */
 .theme-toggle {
-    background: transparent;
+    background: none;
     border: none;
     color: #ffffff;
     font-size: 18px;
@@ -139,11 +130,14 @@ header img {
 .container {
     max-width: 900px;
     margin: auto;
-    padding: 16px;
+    padding: 32px 16px;
 }
 
+/* =====================================================
+   SEÇÃO / MÊS
+===================================================== */
 .mes {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .mes h2 {
@@ -159,25 +153,24 @@ header img {
 }
 
 /* =====================================================
-   CARD PROVA
+   CARD PROVA – ILHAS DE LEITURA
 ===================================================== */
 .prova {
     background: var(--card);
     padding: 18px;
     border-radius: 16px;
     margin-bottom: 14px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,.18);
     cursor: pointer;
     position: relative;
 }
 
-[data-theme="dark"] .prova {
-    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+.prova:hover {
+    transform: translateY(-2px);
 }
 
 .prova h3 {
     margin: 0 0 6px;
-    font-size: 16px;
     color: var(--azul);
 }
 
@@ -195,13 +188,7 @@ header img {
     color: rgba(230,237,243,.85);
 }
 
-.prova:hover {
-    transform: translateY(-2px);
-}
-
-/* =====================================================
-   PROVAS ANTERIORES – ÚNICO LARANJA
-===================================================== */
+/* PROVAS ANTERIORES – ÚNICO LARANJA */
 .prova.destaque-anos {
     background: var(--laranja);
 }
@@ -211,66 +198,32 @@ header img {
     color: #ffffff;
 }
 
-/* TEXTO OCULTO PARA BUSCA */
-.prova span {
-    position: absolute;
-    left: -9999px;
+/* =====================================================
+   RODAPÉ (INTEGRADO)
+===================================================== */
+footer {
+    background: transparent;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 16px 24px;
 }
 
-/* =====================================================
-   INSTAGRAM
-===================================================== */
 .instagram-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 999px;
     background: #ffffff;
     color: var(--azul);
-    border: 2px solid var(--azul);
-    border-radius: 999px;
-    font-size: 14px;
+    border: 2px solid #ffffff;
     font-weight: 600;
     text-decoration: none;
 }
 
-.instagram-btn:hover {
-    background: var(--azul);
-    color: #ffffff;
-}
-
-/* DARK – INSTAGRAM VISÍVEL */
 [data-theme="dark"] .instagram-btn {
     background: #ffffff;
     color: var(--azul);
-    border-color: #ffffff;
 }
 
-/* =====================================================
-   RODAPÉ
-===================================================== */
-footer {
-    background: var(--azul);
-    color: #ffffff;
-    text-align: center;
-    padding: 22px 12px;
-    font-size: 14px;
-    margin-top: 40px;
-}
-
-/* =====================================================
-   DESKTOP
-===================================================== */
-@media (min-width: 1024px) {
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    body {
-        padding-bottom: 110px;
-    }
-}
 </style>
 </head>
 
@@ -278,7 +231,6 @@ footer {
 
 <header>
     <div class="header-content">
-
         <img src="logo.png" alt="Foto, Mar e Aventuras">
 
         <div class="header-texto">
@@ -287,11 +239,8 @@ footer {
             <p class="autor">Fotografia por <strong>Daniel Leite Jr</strong></p>
         </div>
 
-        <div class="busca">
-            <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
-        </div>
-
-        <button class="theme-toggle" id="themeToggle" title="Mudar tema">🌙</button>
+        <input class="busca" type="text" placeholder="Buscar prova...">
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </div>
 </header>
 
@@ -341,39 +290,21 @@ footer {
 
 <footer>
     <p>📸 Siga no Instagram</p>
-    <a href="https://www.instagram.com/fotomareaventuras" target="_blank" class="instagram-btn">
+    <a class="instagram-btn" href="https://www.instagram.com/fotomareaventuras" target="_blank">
         @fotomareaventuras
     </a>
     <p style="font-size:12px;opacity:.8;">© 2026 Foto, Mar e Aventuras</p>
 </footer>
 
 <script>
-/* BUSCA */
-const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-document.getElementById("busca").addEventListener("input", function () {
-    const termo = normalizar(this.value);
-    document.querySelectorAll(".prova").forEach(p => {
-        p.style.display = normalizar(p.innerText).includes(termo) ? "block" : "none";
-    });
-});
-
-/* DARK / LIGHT – SISTEMA HÍBRIDO */
-const toggle = document.getElementById("themeToggle");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme) {
-    document.documentElement.setAttribute("data-theme", savedTheme);
-} else if (prefersDark) {
-    document.documentElement.setAttribute("data-theme", "dark");
+function toggleTheme() {
+    const html = document.documentElement;
+    const novo = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", novo);
+    localStorage.setItem("theme", novo);
 }
-
-toggle.onclick = () => {
-    const atual = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", atual);
-    localStorage.setItem("theme", atual);
-};
 </script>
 
 </body>
-</html>
+   </html>
+   
