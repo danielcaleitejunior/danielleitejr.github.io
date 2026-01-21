@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Fotos das Provas e Treinos | Foto, Mar e Aventuras</title>
-<meta name="description" content="Galerias de fotos das provas e treinos esportivos. Fotografia por Daniel Leite Jr.">
+
+<meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://danielleitejr.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
+<meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
+<meta property="og:image" content="https://danielleitejr.com.br/logo.png">
+<meta property="og:locale" content="pt_BR">
 
 <style>
-/* ==================================================
-   ⚠️ ÁREA SENSÍVEL – VARIÁVEIS DE CORES
-   Alterar aqui muda o site inteiro
-================================================== */
+/* =====================================================
+   VARIÁVEIS – IDENTIDADE FOTO, MAR E AVENTURAS
+===================================================== */
 :root {
     --bg: #f3f3f3;
     --card: #ffffff;
@@ -21,82 +29,74 @@
     --laranja: #f4a261;
 }
 
+/* DARK MODE */
 [data-theme="dark"] {
-    --bg: #0b1f33;
-    --card: #082235;
+    --bg: #061a2b;
+    --card: #0a2a44;
     --texto: #ffffff;
 }
 
-/* =====================
+/* =====================================================
    BASE
-===================== */
+===================================================== */
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: var(--bg);
     color: var(--texto);
 }
 
-/* =====================
+/* =====================================================
    HEADER
-===================== */
+===================================================== */
 header {
     background: linear-gradient(160deg, var(--azul-escuro), var(--azul));
-    color: #fff;
-    padding: 20px 16px;
-    position: relative;
+    color: white;
+    padding: 14px 16px;
 }
 
 .header-content {
     max-width: 1100px;
     margin: auto;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
 }
 
-.header-content h1 {
+/* LOGO – ajuste o caminho se necessário */
+header img {
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+}
+
+.header-texto {
+    flex: 1 1 220px;
+}
+
+.header-texto h1 {
     margin: 0;
-    font-size: clamp(22px, 5vw, 30px);
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.linha-funcao {
-    margin: 4px 0 2px;
+.header-texto p {
+    margin: 2px 0;
     font-size: 14px;
-    opacity: .9;
+    opacity: 0.9;
 }
 
-.linha-autor {
-    margin: 0;
-    font-size: 11px;
-    opacity: .7;
-    font-style: italic;
+.header-texto .autor {
+    font-size: 13px;
+    opacity: 0.85;
 }
 
-/* =====================
-   BOTÃO DARK / LIGHT
-===================== */
-.theme-toggle {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    background: rgba(255,255,255,.15);
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-    cursor: pointer;
-    color: #fff;
-}
-
-/* =====================
-   BUSCA
-===================== */
 .busca {
-    max-width: 900px;
-    margin: 16px auto 0;
-    padding: 0 16px;
+    flex: 1 1 260px;
 }
 
 .busca input {
@@ -107,9 +107,18 @@ header {
     font-size: 15px;
 }
 
-/* =====================
+/* BOTÃO DARK/LIGHT */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* =====================================================
    CONTEÚDO
-===================== */
+===================================================== */
 .container {
     max-width: 900px;
     margin: auto;
@@ -127,21 +136,17 @@ header {
     padding-left: 10px;
 }
 
-/* =====================
-   CARD DE PROVA
-===================== */
+/* =====================================================
+   CARD PROVA
+===================================================== */
 .prova {
     background: var(--card);
     padding: 18px;
     border-radius: 16px;
     margin-bottom: 14px;
-    box-shadow: 0 2px 6px rgba(0,0,0,.12);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     cursor: pointer;
     position: relative;
-}
-
-.prova:hover {
-    opacity: .95;
 }
 
 .prova h3 {
@@ -150,70 +155,85 @@ header {
     color: var(--azul);
 }
 
-[data-theme="dark"] .prova h3 {
-    color: #fff;
-}
-
 .prova p {
     margin: 0;
     font-size: 14px;
-    opacity: .8;
+    opacity: 0.85;
 }
 
-/* Texto oculto para busca */
+.prova:hover {
+    opacity: 0.9;
+}
+
+/* DESTAQUE – PROVAS ANTERIORES (ÚNICO LARANJA) */
+.prova.destaque-anos {
+    background: var(--laranja);
+}
+
+.prova.destaque-anos h3,
+.prova.destaque-anos p {
+    color: #ffffff;
+}
+
+/* TEXTO OCULTO PARA BUSCA */
 .prova span {
     position: absolute;
     left: -9999px;
 }
 
-/* =====================
-   PROVAS ANTERIORES
-===================== */
-.prova.destaque {
-    background: #d35400;
+/* =====================================================
+   BOTÃO INSTAGRAM – IDENTIDADE AZUL
+===================================================== */
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: #ffffff;
+    color: var(--azul);
+    border: 2px solid var(--azul);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
 
-.prova.destaque h3,
-.prova.destaque p {
-    color: #fff;
+.instagram-btn:hover {
+    background: var(--azul);
+    color: #ffffff;
 }
 
-/* =====================
-   FOOTER
-===================== */
+/* DARK MODE – INSTAGRAM */
+[data-theme="dark"] .instagram-btn {
+    background: var(--azul);
+    color: #ffffff;
+    border-color: var(--azul);
+}
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
 footer {
     background: var(--azul);
-    color: #fff;
+    color: white;
     text-align: center;
-    padding: 24px 12px;
+    padding: 22px 12px;
     font-size: 14px;
     margin-top: 40px;
 }
 
-.instagram-btn {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 18px;
-    background: var(--laranja);
-    color: #000;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-/* =====================
-   DESKTOP
-===================== */
-@media (min-width:768px){
-    .header-content {
-        text-align: left;
+/* =====================================================
+   RESPONSIVO DESKTOP
+===================================================== */
+@media (min-width: 1024px) {
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
     }
-
-    .linha-autor {
-        margin-top: 6px;
-        border-top: 1px solid rgba(255,255,255,.2);
-        padding-top: 6px;
-        max-width: 280px;
+    body {
+        padding-bottom: 110px;
     }
 }
 </style>
@@ -222,133 +242,100 @@ footer {
 <body>
 
 <header>
-    <!-- Botão discreto para alternar tema -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌙</button>
-
     <div class="header-content">
-        <h1>Foto, Mar e Aventuras</h1>
-        <p class="linha-funcao">Fotos das Provas e Treinos</p>
-        <p class="linha-autor">Fotografia por Daniel Leite Jr</p>
-    </div>
 
-    <div class="busca">
-        <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+        <img src="logo.png" alt="Foto, Mar e Aventuras">
+
+        <div class="header-texto">
+            <h1>Foto, Mar e Aventuras</h1>
+            <p>Fotos das Provas e Treinos</p>
+            <p class="autor">Fotografia esportiva por <strong>Daniel Leite Jr</strong></p>
+        </div>
+
+        <div class="busca">
+            <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+        </div>
+
+        <button class="theme-toggle" id="themeToggle" title="Mudar tema">🌙</button>
     </div>
 </header>
 
 <div class="container">
 
-    <!-- ==================================================
-         📅 MÊS: JANEIRO 2026
-         Para adicionar nova prova:
-         1. Copie um bloco .prova abaixo
-         2. Cole antes do fechamento deste mês
-    ================================================== -->
-    <div class="mes">
-        <h2>Janeiro 2026</h2>
+<!-- ==================================================
+     📅 JANEIRO 2026
+================================================== -->
+<div class="mes">
+<h2>Janeiro 2026</h2>
 
-        <!-- ⛔ INÍCIO DAS PROVAS DE JANEIRO 2026 -->
+<div class="prova" onclick="window.open('https://danielleitejr.fotop.com/','_blank')">
+    <h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
+    <p>21/01/2026 — Abrir galeria</p>
+    <span>janeiro 2026 nogueira petrópolis treino</span>
+</div>
 
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/','_blank')">
-            <h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
-            <p>21/01/2026 — Abrir galeria</p>
-            <span>janeiro nogueira petropolis estrada</span>
-        </div>
+<div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')">
+    <h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
+    <p>18/01/2026 — Abrir galeria</p>
+    <span>janeiro 2026 juiz de fora corrida verão</span>
+</div>
 
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')">
-            <h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
-            <p>18/01/2026 — Abrir galeria</p>
-            <span>janeiro juiz de fora jf corrida verão</span>
-        </div>
+<div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
+    <h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
+    <p>18/01/2026 — Abrir galeria</p>
+    <span>janeiro 2026 jf trilha treino</span>
+</div>
+</div>
 
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
-            <h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
-            <p>18/01/2026 — Abrir galeria</p>
-            <span>janeiro trilha juiz de fora torreões</span>
-        </div>
+<!-- ==================================================
+     📁 PROVAS ANTERIORES
+================================================== -->
+<div class="mes">
+<h2>2025 e anteriores</h2>
 
-        <!-- ⛔ FIM DAS PROVAS DE JANEIRO 2026 -->
-
-        <!-- MODELO DE PROVA (COPIAR E COLAR)
-        <div class="prova" onclick="window.open('LINK_DA_GALERIA','_blank')">
-            <h3>🏃 Nome da prova – Cidade / UF</h3>
-            <p>DD/MM/AAAA — Abrir galeria</p>
-            <span>palavras chave para busca</span>
-        </div>
-        -->
-
-    </div>
-
-    <!-- ==================================================
-         📦 PROVAS ANTIGAS
-         NÃO REMOVER ESTE BLOCO
-    ================================================== -->
-    <div class="mes">
-        <h2>2025 e anteriores</h2>
-
-        <div class="prova destaque" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
-            <h3>🚴🏃🏊 Provas 2025 e anteriores</h3>
-            <p>Galerias antigas</p>
-            <span>2025 2024 2023 provas antigas</span>
-        </div>
-    </div>
+<div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
+    <h3>🚴🏃🏊 2025 e anteriores</h3>
+    <p>Galerias antigas</p>
+    <span>arquivo histórico provas antigas</span>
+</div>
+</div>
 
 </div>
 
 <footer>
-    <p>📸 Acompanhe no Instagram</p>
-    <a class="instagram-btn" href="https://www.instagram.com/fotomareaventuras" target="_blank">
+    <p>📸 Siga no Instagram</p>
+    <a href="https://www.instagram.com/fotomareaventuras" target="_blank" class="instagram-btn">
         @fotomareaventuras
     </a>
-    <p style="font-size:12px;opacity:.7;margin-top:12px;">
-        © 2026 Foto, Mar e Aventuras — Daniel Leite Jr
-    </p>
+    <p style="font-size:12px;opacity:.8;">© 2026 Foto, Mar e Aventuras</p>
 </footer>
 
 <script>
-/* ==================================================
-   ⚠️ ÁREA SENSÍVEL – TEMA DARK / LIGHT
-   Não alterar sem orientação
-================================================== */
-const toggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-const setTheme = theme => {
-    document.documentElement.setAttribute('data-theme', theme);
-    toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    localStorage.setItem('theme', theme);
-};
-
-if (savedTheme) {
-    setTheme(savedTheme);
-} else {
-    setTheme(prefersDark ? 'dark' : 'light');
-}
-
-toggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
-});
-
-/* ==================================================
-   🔍 BUSCA DE PROVAS
-================================================== */
-const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-
-document.getElementById("busca").addEventListener("input", function(){
+/* BUSCA */
+const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+document.getElementById("busca").addEventListener("input", function () {
     const termo = normalizar(this.value);
-    document.querySelectorAll(".mes").forEach(mes=>{
-        let visivel=false;
-        mes.querySelectorAll(".prova").forEach(prova=>{
-            const texto=normalizar(prova.innerText);
-            const show=texto.includes(termo);
-            prova.style.display=show?"block":"none";
-            if(show) visivel=true;
-        });
-        mes.style.display=visivel?"block":"none";
+    document.querySelectorAll(".prova").forEach(p => {
+        p.style.display = normalizar(p.innerText).includes(termo) ? "block" : "none";
     });
 });
+
+/* DARK / LIGHT – SISTEMA HÍBRIDO */
+const toggle = document.getElementById("themeToggle");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme) {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+} else if (prefersDark) {
+    document.documentElement.setAttribute("data-theme", "dark");
+}
+
+toggle.onclick = () => {
+    const atual = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", atual);
+    localStorage.setItem("theme", atual);
+};
 </script>
 
 </body>
