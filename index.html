@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Fotos das Provas e Treinos | Foto, Mar e Aventuras</title>
 
-<meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo e acesse suas fotos com a Foto, Mar e Aventuras.">
+<meta name="description" content="Galerias de fotos das provas esportivas. Encontre sua corrida, triathlon ou evento esportivo.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://danielleitejr.com.br/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fotos das Provas e Treinos | Foto, Mar e Aventuras">
-<meta property="og:description" content="Encontre sua prova esportiva e acesse a galeria oficial de fotos.">
-<meta property="og:image" content="https://danielleitejr.com.br/logo.png">
-<meta property="og:locale" content="pt_BR">
 
 <style>
 * { box-sizing: border-box; }
@@ -22,13 +16,13 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
-    color: #2f2f2f;
+    background: #f3f3f3;
+    color: #333;
 }
 
 /* ===== HEADER ===== */
 header {
-    background: linear-gradient(160deg, #1f1f1f, #2f2f2f);
+    background: linear-gradient(160deg, #082235, #0a3d62);
     color: white;
     padding: 14px 16px;
 }
@@ -38,31 +32,23 @@ header {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: 14px;
+    align-items: center;
 }
 
 header img {
     max-width: 140px;
-    width: 100%;
-    height: auto;
-}
-
-.header-texto {
-    flex: 1 1 220px;
 }
 
 .header-texto h1 {
     margin: 0;
-    font-size: clamp(16px, 3vw, 20px);
-    letter-spacing: 1px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 
 .header-texto p {
     margin: 0;
-    font-size: clamp(13px, 2.5vw, 15px);
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .busca {
@@ -90,8 +76,8 @@ header img {
 
 .mes h2 {
     font-size: 18px;
-    color: #1f1f1f;
-    border-left: 5px solid #2f2f2f;
+    color: #0a3d62;
+    border-left: 5px solid #0a3d62;
     padding-left: 10px;
 }
 
@@ -101,42 +87,45 @@ header img {
     padding: 18px;
     border-radius: 16px;
     margin-bottom: 14px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
     cursor: pointer;
     position: relative;
-    transition: background 0.2s ease;
+    transition: background .2s ease;
+}
+
+.prova:hover {
+    background: #eaf3ff;
 }
 
 .prova h3 {
     margin: 0 0 6px;
     font-size: 17px;
-    color: #1f1f1f;
+    color: #0a3d62;
 }
 
 .prova p {
     margin: 0;
     font-size: 14px;
-    opacity: 0.8;
+    opacity: .8;
 }
 
-.prova:hover {
-    background: #f2f2f2;
+.prova span {
+    position: absolute;
+    left: -9999px;
 }
 
-/* Destaque anos */
+/* ===== DESTAQUE ANOS ANTERIORES ===== */
 .prova.destaque-anos {
-    background-color: #2f2f2f;
+    background: #f39c12;
+}
+
+.prova.destaque-anos:hover {
+    background: #e67e22;
 }
 
 .prova.destaque-anos h3,
 .prova.destaque-anos p {
-    color: #ffffff;
-}
-
-/* ===== TEXTO OCULTO PARA BUSCA ===== */
-.prova span[aria-hidden="true"] {
-    position: absolute;
-    left: -9999px;
+    color: #fff;
 }
 
 /* ===== BOTÃO TOPO ===== */
@@ -144,7 +133,7 @@ header img {
     position: fixed;
     bottom: 18px;
     right: 18px;
-    background: #2f2f2f;
+    background: #0a3d62;
     color: white;
     width: 46px;
     height: 46px;
@@ -159,7 +148,7 @@ header img {
 
 /* ===== RODAPÉ ===== */
 footer {
-    background: #1f1f1f;
+    background: #082235;
     color: white;
     text-align: center;
     padding: 22px 12px;
@@ -179,34 +168,22 @@ footer {
     gap: 8px;
     padding: 10px 16px;
     background: #ffffff;
-    color: #2f2f2f;
+    color: #0a3d62;
     border-radius: 999px;
-    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+.instagram-btn:hover {
+    transform: translateY(-1px);
+    opacity: .9;
 }
 
 .instagram-btn svg {
     width: 18px;
     height: 18px;
     fill: currentColor;
-}
-
-.instagram-btn:hover {
-    transform: translateY(-1px);
-    opacity: 0.9;
-}
-
-@media (min-width: 1024px) {
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    body {
-        padding-bottom: 110px;
-    }
 }
 </style>
 </head>
@@ -223,49 +200,25 @@ footer {
         </div>
 
         <div class="busca">
-            <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+            <input id="busca" placeholder="Buscar prova, cidade ou mês...">
         </div>
     </div>
 </header>
 
+<div class="container" id="lista-provas"></div>
+
+<!-- BLOCO FIXO ANOS ANTERIORES -->
 <div class="container">
-
-    <div class="mes">
-        <h2>Janeiro 2026</h2>
-
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/','_blank')">
-            <h3>🏃 Treino em Nogueira - Petrópolis - RJ</h3>
-            <p>21/01/2026 — Abrir galeria</p>
-            <span aria-hidden="true">janeiro nogueira petropolis treino estrada</span>
-        </div>
-
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')">
-            <h3>🏃 Ranking das Estações de Trilhas de Juiz de Fora - Corrida do Verão - MG</h3>
-            <p>18/01/2026 — Abrir galeria</p>
-            <span aria-hidden="true">janeiro juiz de fora jf trilha corrida</span>
-        </div>
-
-        <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
-            <h3>🏃 Movimenta Juiz de Fora - Trilhas - MG</h3>
-            <p>18/01/2026 — Abrir galeria</p>
-            <span aria-hidden="true">janeiro jf trilha treino são pedro</span>
-        </div>
-    </div>
-
     <div class="mes">
         <h2>2025 e anteriores</h2>
 
-        <div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
+        <div class="prova destaque-anos"
+             onclick="window.open('https://danielleitejr.fotop.com','_blank')">
             <h3>🚴🏃🏊 2025 e anteriores</h3>
             <p>Galerias antigas</p>
-            <span aria-hidden="true">2025 2024 2023 arquivos provas antigas</span>
+            <span>2025 2024 2023 eventos antigos</span>
         </div>
     </div>
-
-    <div id="sem-resultados" style="display:none;text-align:center;opacity:0.7;">
-        Nenhuma prova encontrada 😕
-    </div>
-
 </div>
 
 <footer>
@@ -286,43 +239,92 @@ footer {
         </a>
     </div>
 
-    <p style="font-size:12px;opacity:0.8;">
+    <p style="font-size:12px;opacity:.7;">
         © 2026 Foto, Mar e Aventuras — Todos os direitos reservados
     </p>
 </footer>
 
-<div id="topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</div>
+<div id="topo" onclick="scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
-const normalizar = texto =>
-    texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+/* ===== DADOS DAS PROVAS (VOCÊ SÓ EDITA AQUI) ===== */
+const provas = [
+  {
+    titulo: "🏃 Treino em Nogueira - Petrópolis - RJ",
+    data: "2026-01-21",
+    link: "https://danielleitejr.fotop.com/",
+    tags: "janeiro nogueira petropolis treino"
+  },
+  {
+    titulo: "🏃 Ranking das Estações de Trilhas - Juiz de Fora - MG",
+    data: "2026-01-18",
+    link: "https://danielleitejr.fotop.com/fotos/eventos?evento=236497",
+    tags: "janeiro jf juiz de fora trilha corrida"
+  },
+  {
+    titulo: "🏃 Movimenta Juiz de Fora - Trilhas - MG",
+    data: "2026-01-18",
+    link: "https://danielleitejr.fotop.com/fotos/eventos?evento=237225",
+    tags: "janeiro jf trilha treino"
+  }
+];
 
-document.getElementById("busca").addEventListener("input", function () {
-    const termo = normalizar(this.value);
-    let encontrou = false;
+/* ===== LÓGICA ===== */
+const meses = [
+  "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+  "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
+];
 
-    document.querySelectorAll(".mes").forEach(mes => {
-        let visivel = false;
+const lista = document.getElementById("lista-provas");
+const grupos = {};
 
-        mes.querySelectorAll(".prova").forEach(prova => {
-            const texto = normalizar(prova.innerText);
-            const mostrar = texto.includes(termo);
-
-            prova.style.display = mostrar ? "block" : "none";
-            if (mostrar) visivel = true;
-        });
-
-        mes.style.display = visivel ? "block" : "none";
-        if (visivel) encontrou = true;
-    });
-
-    document.getElementById("sem-resultados").style.display =
-        encontrou ? "none" : "block";
+provas.forEach(p => {
+  const d = new Date(p.data);
+  const chave = `${meses[d.getMonth()]} ${d.getFullYear()}`;
+  (grupos[chave] = grupos[chave] || []).push(p);
 });
 
+Object.entries(grupos).forEach(([mes, itens]) => {
+  const bloco = document.createElement("div");
+  bloco.className = "mes";
+  bloco.innerHTML = `<h2>${mes}</h2>`;
+
+  itens.forEach(p => {
+    bloco.innerHTML += `
+      <div class="prova" onclick="window.open('${p.link}','_blank')">
+        <h3>${p.titulo}</h3>
+        <p>${new Date(p.data).toLocaleDateString('pt-BR')} — Abrir galeria</p>
+        <span>${p.tags}</span>
+      </div>`;
+  });
+
+  lista.appendChild(bloco);
+});
+
+/* ===== BUSCA ===== */
+const normalizar = t =>
+  t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+document.getElementById("busca").addEventListener("input", function () {
+  const termo = normalizar(this.value);
+
+  document.querySelectorAll(".mes").forEach(m => {
+    let visivel = false;
+
+    m.querySelectorAll(".prova").forEach(p => {
+      const show = normalizar(p.innerText).includes(termo);
+      p.style.display = show ? "block" : "none";
+      if (show) visivel = true;
+    });
+
+    m.style.display = visivel ? "block" : "none";
+  });
+});
+
+/* ===== BOTÃO TOPO ===== */
 window.addEventListener("scroll", () => {
-    document.getElementById("topo").style.display =
-        document.documentElement.scrollTop > 200 ? "flex" : "none";
+  document.getElementById("topo").style.display =
+    scrollY > 200 ? "flex" : "none";
 });
 </script>
 
