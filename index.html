@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,22 +18,33 @@
 
 <style>
 /* =====================================================
-   VARIÁVEIS – IDENTIDADE FOTO, MAR E AVENTURAS
+   IDENTIDADE — FOTO, MAR E AVENTURAS
 ===================================================== */
 :root {
-    --bg: #f3f6f9;
-    --card: #ffffff;
-    --texto: #1f2a33;
     --azul: #0a3d62;
     --azul-escuro: #082235;
     --laranja: #f4a261;
+
+    --texto: #1f2a33;
+    --card: rgba(255,255,255,0.92);
+
+    --bg-gradiente:
+        linear-gradient(180deg,
+        #082235 0%,
+        #0a3d62 35%,
+        #f3f3f3 100%);
 }
 
-/* DARK MODE – FOTOGRÁFICO */
+/* DARK — FOTOGRÁFICO */
 [data-theme="dark"] {
-    --bg: linear-gradient(180deg, #050d14 0%, #0b1f33 100%);
-    --card: rgba(255,255,255,0.04);
-    --texto: #eaf2f8;
+    --texto: #f1f5f9;
+    --card: rgba(10,42,68,0.88);
+
+    --bg-gradiente:
+        linear-gradient(180deg,
+        #000c14 0%,
+        #041c30 40%,
+        #061a2b 100%);
 }
 
 /* =====================================================
@@ -44,18 +55,30 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: var(--bg);
     color: var(--texto);
-    transition: background 200ms ease, color 200ms ease;
+    background: var(--bg-gradiente);
+    transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* textura fotográfica imperceptível */
+body::before {
+    content:"";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.04), transparent 60%),
+      radial-gradient(circle at 70% 80%, rgba(0,0,0,0.05), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* =====================================================
    HEADER
 ===================================================== */
 header {
-    background: linear-gradient(160deg, var(--azul-escuro), var(--azul));
-    color: white;
-    padding: 14px 16px;
+    position: relative;
+    z-index: 2;
+    padding: 16px;
 }
 
 .header-content {
@@ -69,19 +92,13 @@ header {
 
 header img {
     max-width: 140px;
-    width: 100%;
-    height: auto;
-}
-
-.header-texto {
-    flex: 1 1 220px;
 }
 
 .header-texto h1 {
     margin: 0;
     font-size: 18px;
-    letter-spacing: 1px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .header-texto p {
@@ -90,26 +107,27 @@ header img {
     opacity: 0.9;
 }
 
-.header-texto .autor {
+.autor {
     font-size: 13px;
     opacity: 0.85;
 }
 
+/* BUSCA — CENTRAL */
 .busca {
-    flex: 1 1 260px;
-    text-align: center;
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .busca input {
-    width: 100%;
-    max-width: 420px;
+    width: min(420px, 100%);
     padding: 12px 16px;
     border-radius: 999px;
     border: none;
     font-size: 15px;
 }
 
-/* BOTÃO DARK/LIGHT */
+/* TOGGLE */
 .theme-toggle {
     background: transparent;
     border: none;
@@ -122,9 +140,11 @@ header img {
    CONTEÚDO
 ===================================================== */
 .container {
+    position: relative;
+    z-index: 2;
     max-width: 900px;
     margin: auto;
-    padding: 20px 16px 40px;
+    padding: 16px;
 }
 
 .mes {
@@ -133,31 +153,31 @@ header img {
 
 .mes h2 {
     font-size: 18px;
-    color: var(--azul);
-    border-left: 5px solid var(--azul);
+    color: white;
+    border-left: 4px solid white;
     padding-left: 10px;
 }
 
 /* =====================================================
    CARD PROVA
-   ⚠️ NÃO ALTERAR ESTRUTURA DOS LINKS
 ===================================================== */
+/* ⚠️ GUIA IMPORTANTE:
+   - NÃO REMOVER a div .prova
+   - NÃO ALTERAR os links
+   - SEMPRE duplicar o bloco inteiro
+*/
+
 .prova {
     background: var(--card);
     padding: 18px;
     border-radius: 16px;
-    margin-bottom: 18px; /* micro-ajuste de respiração */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    cursor: pointer;
-    position: relative;
-
-    /* micro-fade fotográfico */
-    transition: background-color 140ms ease, filter 140ms ease;
+    margin-bottom: 18px; /* micro-respiro */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: opacity 0.15s ease;
 }
 
-.prova:hover,
-.prova:active {
-    filter: brightness(1.03);
+.prova:hover {
+    opacity: 0.96;
 }
 
 .prova h3 {
@@ -167,7 +187,7 @@ header img {
 }
 
 [data-theme="dark"] .prova h3 {
-    color: #ffffff;
+    color: #e3edf7;
 }
 
 .prova p {
@@ -176,81 +196,84 @@ header img {
     opacity: 0.85;
 }
 
-/* PROVAS ANTERIORES – ÚNICO LARANJA */
+/* palavras-chave ocultas */
+.prova span {
+    display: none;
+}
+
+/* PROVAS ANTERIORES — ÚNICO LARANJA */
 .prova.destaque-anos {
     background: var(--laranja);
 }
 
 .prova.destaque-anos h3,
 .prova.destaque-anos p {
-    color: #ffffff;
-}
-
-/* TEXTO OCULTO – BUSCA
-   ⚠️ NÃO REMOVER
-*/
-.prova span {
-    position: absolute;
-    left: -9999px;
-    opacity: 0;
-}
-
-/* =====================================================
-   INSTAGRAM – BOTÃO REDONDO (MOBILE)
-===================================================== */
-.instagram-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 2px solid var(--azul);
-    color: var(--azul);
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.instagram-btn svg {
-    width: 22px;
-    height: 22px;
-}
-
-.instagram-btn:hover {
-    background: var(--azul);
-    color: #ffffff;
-}
-
-[data-theme="dark"] .instagram-btn {
-    background: var(--azul);
-    color: #ffffff;
+    color: white;
 }
 
 /* =====================================================
    RODAPÉ
 ===================================================== */
 footer {
-    background: linear-gradient(180deg, transparent, var(--azul));
-    color: white;
     text-align: center;
-    padding: 28px 12px;
-    font-size: 14px;
-    margin-top: 40px;
+    padding: 26px 12px 80px;
+    color: white;
 }
 
 /* =====================================================
-   DESKTOP
+   BOTÃO INSTAGRAM — FLUTUANTE MOBILE
 ===================================================== */
-@media (min-width: 1024px) {
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    body {
-        padding-bottom: 120px;
-    }
+.instagram-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.instagram-float svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+}
+
+@media (min-width: 768px) {
+    .instagram-float { display: none; }
+}
+
+/* =====================================================
+   BOTÃO VOLTAR AO TOPO — MOBILE
+===================================================== */
+#topo {
+    position: fixed;
+    bottom: 90px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    color: var(--azul);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 998;
+    transition: opacity 0.2s ease;
+}
+
+[data-theme="dark"] #topo {
+    background: rgba(10,42,68,0.9);
+    color: white;
+}
+
+@media (min-width: 768px) {
+    #topo { display: none !important; }
 }
 </style>
 </head>
@@ -258,49 +281,45 @@ footer {
 <body>
 
 <header>
-    <div class="header-content">
-
-        <img src="logo.png" alt="Foto, Mar e Aventuras">
-
-        <div class="header-texto">
-            <h1>Foto, Mar e Aventuras</h1>
-            <p>Fotos das Provas e Treinos</p>
-            <p class="autor">Fotografia por <strong>Daniel Leite Jr</strong></p>
-        </div>
-
-        <div class="busca">
-            <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
-        </div>
-
-        <button class="theme-toggle" id="themeToggle" title="Mudar tema">🌙</button>
+  <div class="header-content">
+    <img src="logo.png" alt="Foto, Mar e Aventuras">
+    <div class="header-texto">
+      <h1>Foto, Mar e Aventuras</h1>
+      <p>Fotos das Provas e Treinos</p>
+      <p class="autor">Fotografia por <strong>Daniel Leite Jr</strong></p>
     </div>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </div>
+
+  <div class="busca">
+    <input type="text" id="busca" placeholder="Buscar prova, cidade ou mês...">
+  </div>
 </header>
 
 <div class="container">
 
 <!-- ==================================================
      📅 JANEIRO 2026
-     🔁 DUPLICAR ESTE BLOCO PARA NOVOS MESES
 ================================================== -->
 <div class="mes">
 <h2>Janeiro 2026</h2>
 
 <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/','_blank')">
-    <h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
-    <p>21/01/2026 — Abrir galeria</p>
-    <span>janeiro 2026 nogueira petrópolis treino</span>
+  <h3>🏃 Treino em Nogueira – Petrópolis / RJ</h3>
+  <p>21/01/2026 — Abrir galeria</p>
+  <span>janeiro nogueira petrópolis treino</span>
 </div>
 
 <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=236497','_blank')">
-    <h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
-    <p>18/01/2026 — Abrir galeria</p>
-    <span>janeiro 2026 juiz de fora corrida verão</span>
+  <h3>🏃 Ranking das Estações – Corrida do Verão – Juiz de Fora / MG</h3>
+  <p>18/01/2026 — Abrir galeria</p>
+  <span>ranking verão jf corrida</span>
 </div>
 
 <div class="prova" onclick="window.open('https://danielleitejr.fotop.com/fotos/eventos?evento=237225','_blank')">
-    <h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
-    <p>18/01/2026 — Abrir galeria</p>
-    <span>janeiro 2026 jf trilha treino</span>
+  <h3>🏃 Movimenta Juiz de Fora – Trilhas / MG</h3>
+  <p>18/01/2026 — Abrir galeria</p>
+  <span>movimenta trilha jf</span>
 </div>
 </div>
 
@@ -311,49 +330,50 @@ footer {
 <h2>2025 e anteriores</h2>
 
 <div class="prova destaque-anos" onclick="window.open('https://danielleitejr.fotop.com','_blank')">
-    <h3>🚴🏃🏊 2025 e anteriores</h3>
-    <p>Galerias antigas</p>
-    <span>arquivo histórico provas antigas</span>
+  <h3>🚴🏃🏊 2025 e anteriores</h3>
+  <p>Galerias antigas</p>
 </div>
 </div>
 
 </div>
 
 <footer>
-    <a href="https://www.instagram.com/fotomareaventuras" target="_blank" class="instagram-btn" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 12 5.51 5.51 0 0 0 12 7.5zm0 9A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 16.5zM18 6.2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-        </svg>
-    </a>
-    <p style="font-size:12px;opacity:.8;margin-top:12px;">© 2026 Foto, Mar e Aventuras</p>
+  <p style="font-size:12px;opacity:.8;">© 2026 Foto, Mar e Aventuras</p>
 </footer>
+
+<!-- INSTAGRAM -->
+<a class="instagram-float" href="https://www.instagram.com/fotomareaventuras" target="_blank" aria-label="Instagram">
+<svg viewBox="0 0 24 24"><path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Z"/></svg>
+</a>
+
+<!-- VOLTAR AO TOPO -->
+<div id="topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
 /* BUSCA */
-const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-document.getElementById("busca").addEventListener("input", function () {
-    const termo = normalizar(this.value);
-    document.querySelectorAll(".prova").forEach(p => {
-        p.style.display = normalizar(p.innerText).includes(termo) ? "block" : "none";
-    });
+const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+document.getElementById("busca").addEventListener("input", function(){
+  const termo = normalizar(this.value);
+  document.querySelectorAll(".prova").forEach(p=>{
+    p.style.display = normalizar(p.innerText).includes(termo) ? "block" : "none";
+  });
 });
 
-/* DARK / LIGHT */
+/* DARK/LIGHT */
 const toggle = document.getElementById("themeToggle");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const savedTheme = localStorage.getItem("theme");
-
-if (savedTheme) {
-    document.documentElement.setAttribute("data-theme", savedTheme);
-} else if (prefersDark) {
-    document.documentElement.setAttribute("data-theme", "dark");
-}
-
-toggle.onclick = () => {
-    const atual = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", atual);
-    localStorage.setItem("theme", atual);
+const saved = localStorage.getItem("theme");
+if(saved) document.documentElement.setAttribute("data-theme", saved);
+toggle.onclick = ()=>{
+  const t = document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
+  document.documentElement.setAttribute("data-theme", t);
+  localStorage.setItem("theme", t);
 };
+
+/* VOLTAR AO TOPO */
+window.addEventListener("scroll",()=>{
+  document.getElementById("topo").style.display =
+    window.scrollY > 300 ? "flex" : "none";
+});
 </script>
 
 </body>
