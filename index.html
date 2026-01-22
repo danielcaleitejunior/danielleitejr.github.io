@@ -368,28 +368,54 @@ footer {
 <div id="topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
 <script>
-/* BUSCA */
-const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-document.getElementById("busca").addEventListener("input", function(){
-  const termo = normalizar(this.value);
-  document.querySelectorAll(".prova").forEach(p=>{
-    p.style.display = normalizar(p.innerText).includes(termo) ? "block" : "none";
-  });
-});
+/* ================================
+   BUSCA — CAMADA 2 (URL VIVA)
+   VERSÃO 1.1 — SEO READY
+   NÃO REMOVE PROVAS
+================================ */
 
-/* DARK / LIGHT AUTOMÁTICO */
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const savedTheme = localStorage.getItem("theme");
-if(savedTheme){
-    document.documentElement.setAttribute("data-theme", savedTheme);
-}else if(prefersDark){
-    document.documentElement.setAttribute("data-theme", "dark");
+const normalizar = t =>
+  t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+
+const inputBusca = document.getElementById("busca");
+
+/* Aplica filtro visual */
+function filtrarProvas(termo) {
+  document.querySelectorAll(".prova").forEach(p => {
+    const texto = normalizar(p.innerText);
+    p.style.display = texto.includes(termo) ? "block" : "none";
+  });
 }
 
-/* VOLTAR AO TOPO */
-window.addEventListener("scroll",()=>{
-  document.getElementById("topo").style.display =
-    window.scrollY > 300 ? "flex" : "none";
+/* Atualiza URL sem recarregar */
+function atualizarURL(termo) {
+  const url = new URL(window.location);
+  if (termo) {
+    url.searchParams.set("q", termo);
+  } else {
+    url.searchParams.delete("q");
+  }
+  history.replaceState(null, "", url);
+}
+
+/* Evento de digitação */
+inputBusca.addEventListener("input", function () {
+  const termo = normalizar(this.value);
+  filtrarProvas(termo);
+  atualizarURL(termo);
+});
+
+/* ================================
+   CARREGA BUSCA DA URL (se existir)
+================================ */
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const termoURL = params.get("q");
+
+  if (termoURL) {
+    inputBusca.value = termoURL;
+    filtrarProvas(normalizar(termoURL));
+  }
 });
 </script>
 
